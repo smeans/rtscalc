@@ -34,6 +34,10 @@
 
                 el.value = e.target.value;
               });
+
+              this.min = 0;
+              this.max = 100;
+              this.value = 0;
             }
 
             get min() {
@@ -55,7 +59,7 @@
             }
   
             get value() {
-              return this.g.num.value;
+              return parseInt(this.g.num.value);
             }
   
             set value(newValue) {
@@ -68,7 +72,7 @@
     </ph-components>
     <h1 id="mainTitle"></h1>
     <p id="mainDescription"></p>
-    <p><select id="currentRacePicker"></select></p>
+    <p><select id="currentRacePicker"></select>&nbsp;<button type="button" id="resetButton">reset</button></p>
 
     <h2>Mining</h2>
     <fieldset id="workers">
@@ -80,14 +84,15 @@
     <fieldset id="units"></fieldset>
 
     <template id="activeWorkerTemplate">
-      <x-hbox>
+      <x-hbox class="worker">
         <label></label>
         <x-slinput></x-slinput>
+        <x-hbox><span class="rpm">0</span>/min.</x-hbox>
       </x-hbox>
     </template>
 
     <template id="unitTemplate">
-      <x-hbox>
+      <x-hbox class="unit">
         <img/>
         <x-slinput></x-slinput>
       </x-hbox>

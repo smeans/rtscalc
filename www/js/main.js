@@ -11,14 +11,20 @@ function getUnitImgSrc(unit) {
     return `/images/${config.info.id}/${unit}.png`;
 }
 
+let keymap;
+let resources;
+
 function syncRace() {
     currentRace = config.races[currentRacePicker.value];
 
     workerImage.src = getUnitImgSrc(currentRace.workers.name)
 
     activeWorkers.innerText = '';
+    resources = Object.keys(currentRace.workers.rpm);
     for (let r in currentRace.workers.rpm) {
         const el = cloneTemplate(activeWorkerTemplate);
+
+        el.id = `resource${r}`;
 
         el.querySelector('label').innerText = r;
 
@@ -27,17 +33,98 @@ function syncRace() {
         rng.max = currentRace.workers.maxActive;
         rng.value = 0;
 
+        el.resource = r;
+        el.rpm = currentRace.workers.rpm[r];
+
         activeWorkers.appendChild(el);
     }
+
+    keymap = {};
 
     units.innerText = '';
     for (let name in currentRace.units) {
         const el = cloneTemplate(unitTemplate);
 
-        el.querySelector('img').src = getUnitImgSrc(name);
+        const img = el.querySelector('img');
+        img.src = getUnitImgSrc(name);
+        img.title = name;
+
+        el.id = `unit${name}`;
 
         units.appendChild(el);
+
+        if (currentRace.units[name].hotkey) {
+            keymap[currentRace.units[name].hotkey] = name;
+        }
+
+        el.unit = name;
     }
+}
+
+function addObjects(a, b) {
+    for (let k in a) {
+        a[k] += b[k] || 0;
+    }
+
+    for (let k in b) {
+        a[k] = (a[k] || 0) + b[k];
+    }
+
+    return a;
+}
+
+function getRequiredRPM(el) {
+    const rpm = {};
+    const uc = el.querySelector('x-slinput').value;
+
+    const ui = currentRace.units[el.unit];
+    const upm = ui.time/60 * uc;
+    resources.forEach((rn) => {
+        if (rn in ui) {
+            rpm[rn] = ui[rn] * upm;
+        }
+    });
+
+    rpm.supply = ui.supply * upm;
+
+    console.log(el.unit, rpm);
+    return rpm;
+}
+
+function getTotalRequiredRPM() {
+    const rr = {};
+
+    document.querySelectorAll('.unit').forEach((el) => {
+        const urr = getRequiredRPM(el);
+        addObjects(rr, urr);
+    });
+
+    return rr;
+}
+
+function addUnit(el) {
+    el.querySelector('x-slinput').value += 1;
+    refreshUnit(el);
+}
+
+function refreshWorker(el) {
+    el.querySelector('.rpm').innerText = el.querySelector('x-slinput').value * el.rpm;
+}
+
+function remaxWorkers(rr) {
+    resources.forEach((rn) => {
+        const re = document.querySelector(`#resource${rn}`);
+        const si = re.querySelector('x-slinput');
+        const rw = Math.ceil(rr[rn]/currentRace.workers.rpm[rn]);
+        si.value = Math.max(si.value, rw);
+        refreshWorker(re);
+    });
+}
+
+function refreshUnit(el) {
+    const rr = getTotalRequiredRPM();
+
+    remaxWorkers(rr);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -57,4 +144,38 @@ document.addEventListener('ph-loaded', () => {
     }
 
     syncRace();
+
+    document.addEventListener('click', (e) => {
+        const ue = e.target.closest('.unit');
+
+        if (!ue) {
+            return;
+        }
+
+        if (e.target.tagName == 'IMG') {
+            addUnit(ue);
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        const un = keymap[e.key.toUpperCase()];
+
+        if (un) {
+            const el = document.querySelector(`#unit${un}`);
+
+            el && addUnit(el);
+        }
+    });
+
+    document.addEventListener('input', (e) => {
+        const we = e.target.closest('.worker');
+        we && refreshWorker(we);
+
+        const ue = e.target.closest('.unit');
+        ue && refreshUnit(ue);
+    });
+
+    resetButton.addEventListener('click', (e) => {
+       syncRace();
+    });
 });

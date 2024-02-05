@@ -2,7 +2,15 @@ const config = {
     "info": {
       "id": "stormgate",
       "title": "Stormgate Build Calculator",
-      "description": "A simple calculator to determine a production mix given a certain level of resource mining in Stormgate."
+      "description": "A simple calculator to determine a production mix given a certain level of resource mining in Stormgate.",
+      "resources": {
+        "luminite": {
+            "color": "#deac26"
+        },
+        "therium": {
+            "color": "0d1e2a"
+        }
+      }
     },
     "races": {
       "vanguard": {

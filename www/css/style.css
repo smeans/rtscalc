@@ -10,3 +10,8 @@ fieldset {
     display: flex;
     flex-wrap: wrap;
 }
+
+img {
+    user-select: none;
+    -webkit-user-drag: none;
+}
