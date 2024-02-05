@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RTS Calculator</title>
+    <link rel="stylesheet" href="/css/expressive.css">
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <ph-components>
+      <template name="x-slinput">
+        <style>
+          :host {
+            display: flex;
+            flex-direction: column;
+          }
+          input[type=number] {
+            width: 3em;
+          }
+        </style>
+
+        <input id="num" type="number">
+        <input id="range" type="range">
+
+        <script>
+          class XSlinput extends PhElement {
+            constructor() {
+              super();
+
+              this.shadowRoot.addEventListener('input', (e) => {
+                const el = e.target === this.g.num ? this.g.range : this.g.num;
+
+                el.value = e.target.value;
+              });
+            }
+
+            get min() {
+              return this.g.num.min;
+            }
+  
+            set min(newMin) {
+              this.g.num.min =
+              this.g.range.min = newMin;
+            }
+  
+            get max() {
+              return this.g.num.max;
+            }
+  
+            set max(newMax) {
+              this.g.num.max =
+              this.g.range.max = newMax;
+            }
+  
+            get value() {
+              return this.g.num.value;
+            }
+  
+            set value(newValue) {
+              this.g.num.value =
+              this.g.range.value = newValue;
+            }
+          }
+        </script>
+      </template>
+    </ph-components>
+    <h1 id="mainTitle"></h1>
+    <p id="mainDescription"></p>
+    <p><select id="currentRacePicker"></select></p>
+
+    <h2>Mining</h2>
+    <fieldset id="workers">
+        <img id="workerImage"/>
+        <x-vbox id="activeWorkers"></x-vbox>
+    </fieldset>
+
+    <h2>Units</h2>
+    <fieldset id="units"></fieldset>
+
+    <template id="activeWorkerTemplate">
+      <x-hbox>
+        <label></label>
+        <x-slinput></x-slinput>
+      </x-hbox>
+    </template>
+
+    <template id="unitTemplate">
+      <x-hbox>
+        <img/>
+        <x-slinput></x-slinput>
+      </x-hbox>
+    </template>
+
+	<script src="/js/stormgate.js"></script>
+	<script src="/js/main.js"></script>
+  <script src="/js/ph.js"></script>
+  </body>
+</html>

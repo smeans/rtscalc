@@ -1,0 +1,12 @@
+fieldset {
+    border: none;
+}
+
+#workers {
+    display: flex;
+}
+
+#units {
+    display: flex;
+    flex-wrap: wrap;
+}
