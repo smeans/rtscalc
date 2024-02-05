@@ -14,7 +14,6 @@
         <style>
           :host {
             display: flex;
-            flex-direction: column;
           }
           input[type=number] {
             width: 3em;
@@ -100,6 +99,7 @@
             padding: .1rem .25rem;
             right: .25rem;
             bottom: .5rem;
+            user-select: none;
           }
         </style>
         <x-frame>
@@ -155,6 +155,102 @@
           }
         </script>
       </template>
+
+      <template name="x-delta-bar">
+        <style>
+          :host {
+            display: inline-block;
+            height: 1rem;
+          }
+
+          x-frame {
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 100%;
+          }
+
+          x-bar {
+            display: block;
+            position: absolute;
+          }
+
+          #minusBar {
+            right: 50%;
+            top: 0;
+            height: 100%;
+            background-color: red;
+          }
+
+          #plusBar {
+            left: 50%;
+            top: 0;
+            height: 100%;
+            background-color: green;
+          }
+
+          label {
+            display: block;
+            position: absolute;
+            font-weight: bold;
+            color: cyan;
+            left: 0;
+            right: 0;
+          }
+
+          #minusLabel {
+            text-align: right;
+          }
+
+          #plusLabel {
+            text-align: left;
+          }
+        </style>
+        <x-frame>
+          <x-bar id="minusBar">
+            <label id="minusLabel"></label>
+          </x-bar>
+          <x-bar id="plusBar">
+            <label id="plusLabel"></label>
+          </x-bar>
+        </x-frame>
+        <script>
+          class XDeltaBar extends PhElement {
+            constructor() {
+              super();
+
+              this._range = 100;
+              this._value = 0;
+            }
+
+            get range() {
+              return this._range;
+            }
+
+            set range(newRange) {
+              this._range = newRange;
+
+              this._syncUI();
+            }
+
+            get value() {
+              return this._value;
+            }
+
+            set value(newValue) {
+              this._value = newValue;
+              this._syncUI();
+            }
+
+            _syncUI() {
+              this.g.minusBar.style.width = this._value < 0 ? (Math.abs(this._value)/this._range)*50.0 + '%' : '0';
+              this.g.minusLabel.innerText = this._value < 0 ? this._value : '';
+              this.g.plusBar.style.width = this._value > 0 ? (Math.abs(this._value)/this._range)*50.0 + '%' : '0';
+              this.g.plusLabel.innerText = this._value > 0 ? this._value : '';
+            }
+          }
+        </script>
+      </template>
     </ph-components>
     <h1 id="mainTitle"></h1>
     <p id="mainDescription"></p>
@@ -166,6 +262,7 @@
           <img id="workerImage"/>
           <x-vbox id="activeWorkers"></x-vbox>
         </x-hbox>
+        <x-hbox><label>supply per minute</label>&nbsp;<span id="supplyPerMinute">0</span>&nbsp;(<span id="netSupplyPerMinute">0</span>&nbsp;net)</x-hbox>
     </fieldset>
 
     <fieldset>
@@ -180,9 +277,14 @@
 
     <template id="activeWorkerTemplate">
       <x-hbox class="worker">
-        <label></label>
-        <x-slinput></x-slinput>
-        <x-hbox><span class="rpm">0</span>/min.</x-hbox>
+        <x-vbox>
+          <x-hbox>
+            <label></label>
+            <x-slinput></x-slinput>
+            <x-hbox><span class="rpm">0</span>/min.</x-hbox>
+          </x-hbox>
+          <x-delta-bar></x-delta-bar>
+        </x-vbox>
       </x-hbox>
     </template>
 

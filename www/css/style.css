@@ -2,12 +2,10 @@ fieldset {
     border: none;
 }
 
-fieldset>h2 {
-}
-
 x-units {
     display: flex;
     flex-wrap: wrap;
+    min-height: 70px;
 }
 
 img {

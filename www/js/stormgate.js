@@ -20,7 +20,10 @@ const config = {
             "luminite": 50,
             "therium": 50
           },
-          "maxActive": 200
+          "maxActive": 100
+        },
+        "supply": {
+          "building": ""
         },
         "units": {
           "bob": {
@@ -152,7 +155,7 @@ const config = {
           "habitat": {
             "luminite": 100,
             "therium": 0,
-            "supply": 0,
+            "supply": -15,
             "time": 20
           },
           "barracks": {

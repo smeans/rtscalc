@@ -20,6 +20,8 @@ function syncRace() {
     workerImage.src = getUnitImgSrc(currentRace.workers.name)
 
     activeWorkers.innerText = '';
+    supplyPerMinute.innerText = '0';
+
     resources = Object.keys(currentRace.workers.rpm);
     for (let r in currentRace.workers.rpm) {
         const el = cloneTemplate(activeWorkerTemplate);
@@ -35,6 +37,8 @@ function syncRace() {
 
         el.resource = r;
         el.rpm = currentRace.workers.rpm[r];
+
+        el.querySelector('x-delta-bar').range = currentRace.workers.maxActive * el.rpm;
 
         activeWorkers.appendChild(el);
     }
@@ -76,17 +80,17 @@ function addObjects(a, b) {
 
 function getRequiredRPM(el) {
     const rpm = {};
-    const uc = el.count;
+    const upm = el.count;
 
     const ui = currentRace.units[el.unit];
-    const upm = ui.time/60 * uc;
     resources.forEach((rn) => {
         if (rn in ui) {
             rpm[rn] = ui[rn] * upm;
         }
     });
 
-    rpm.supply = ui.supply * upm;
+    rpm.supply = (ui.supply > 0 ? ui.supply : 0) * upm;
+    rpm.netSupply = ui.supply * upm;
 
     console.log(el.unit, rpm);
     return rpm;
@@ -117,7 +121,7 @@ function addUnit(el) {
 
     ube.count += 1;
 
-    refreshUnit(el);
+    recalcStats();
 }
 
 function removeUnit(el) {
@@ -126,10 +130,14 @@ function removeUnit(el) {
     if (!el.count) {
         el.remove();
     }
+
+    recalcStats();
 }
 
 function refreshWorker(el) {
     el.querySelector('.rpm').innerText = el.querySelector('x-slinput').value * el.rpm;
+
+    recalcStats();
 }
 
 function remaxWorkers(rr) {
@@ -142,10 +150,19 @@ function remaxWorkers(rr) {
     });
 }
 
-function refreshUnit(el) {
+function recalcStats() {
     const rr = getTotalRequiredRPM();
 
-    remaxWorkers(rr);
+    resources.forEach((rn) => {
+        const re = document.querySelector(`#resource${rn}`);
+        const db = re.querySelector('x-delta-bar');
+        const rpm = +re.querySelector('.rpm').innerText;
+
+        db.value = rpm - rr[rn];
+    });
+
+    supplyPerMinute.innerText = rr.supply;
+    netSupplyPerMinute.innerText = rr.netSupply;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
