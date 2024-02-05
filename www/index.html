@@ -69,19 +69,114 @@
           }
         </script>
       </template>
+
+      <template name="x-unit-tile">
+        <style>
+          .hidden {
+            display: none !important;
+          }
+
+          x-frame {
+            display: block;
+            position: relative;
+          }
+
+          img {
+            user-select: none;
+            user-drag: none;
+            -webkit-user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;            
+          }
+
+          #badge {
+            display: block;
+            position: absolute;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: .1rem .25rem;
+            right: .25rem;
+            bottom: .5rem;
+          }
+        </style>
+        <x-frame>
+          <img id="image"/>
+          <x-badge id="badge">0</x-badge>
+        </x-frame>
+        <script>
+          class XUnitTile extends PhElement {
+            constructor() {
+              super();
+
+              this._count = 0;
+              this._refreshUI();
+            }
+
+            get src() {
+              return this.g.image.src;
+            }
+
+            set src(newSrc) {
+              this.g.image.src = newSrc;
+            }
+
+            get title() {
+              return this.g.image.title;
+            }
+
+            set title(newTitle) {
+              this.g.image.title = newTitle;
+            }
+
+            get count() {
+              return this._count;
+            }
+
+            set count(newCount) {
+              this._count = newCount;
+              this._refreshUI();
+            }
+
+            get unitInfo() {
+              return this._unitInfo;
+            }
+
+            set unitInfo(newUnitInfo) {
+              this._unitInfo = newUnitInfo;
+            }
+
+            _refreshUI() {
+              this.g.badge.innerText = this.count;
+              this.g.badge.classList.toggle('hidden', !this.count);
+            }
+          }
+        </script>
+      </template>
     </ph-components>
     <h1 id="mainTitle"></h1>
     <p id="mainDescription"></p>
     <p><select id="currentRacePicker"></select>&nbsp;<button type="button" id="resetButton">reset</button></p>
 
-    <h2>Mining</h2>
     <fieldset id="workers">
-        <img id="workerImage"/>
-        <x-vbox id="activeWorkers"></x-vbox>
+        <h2>Mining</h2>
+        <x-hbox>
+          <img id="workerImage"/>
+          <x-vbox id="activeWorkers"></x-vbox>
+        </x-hbox>
     </fieldset>
 
-    <h2>Units</h2>
-    <fieldset id="units"></fieldset>
+    <fieldset>
+      <h2>Building</h2>
+      <x-units id="unitsBuilding"></x-units>
+    </fieldset>
+
+    <fieldset>
+      <h2>Units</h2>
+      <x-units id="units"></x-units>
+    </fieldset>
 
     <template id="activeWorkerTemplate">
       <x-hbox class="worker">
@@ -92,10 +187,7 @@
     </template>
 
     <template id="unitTemplate">
-      <x-hbox class="unit">
-        <img/>
-        <x-slinput></x-slinput>
-      </x-hbox>
+      <x-unit-tile></x-unit-tile>
     </template>
 
 	<script src="/js/stormgate.js"></script>

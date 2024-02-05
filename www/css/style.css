@@ -2,11 +2,10 @@ fieldset {
     border: none;
 }
 
-#workers {
-    display: flex;
+fieldset>h2 {
 }
 
-#units {
+x-units {
     display: flex;
     flex-wrap: wrap;
 }

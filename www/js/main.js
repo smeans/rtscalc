@@ -39,15 +39,16 @@ function syncRace() {
         activeWorkers.appendChild(el);
     }
 
+    unitsBuilding.innerText = '';
+
     keymap = {};
 
     units.innerText = '';
     for (let name in currentRace.units) {
         const el = cloneTemplate(unitTemplate);
 
-        const img = el.querySelector('img');
-        img.src = getUnitImgSrc(name);
-        img.title = name;
+        el.src = getUnitImgSrc(name);
+        el.title = name;
 
         el.id = `unit${name}`;
 
@@ -75,7 +76,7 @@ function addObjects(a, b) {
 
 function getRequiredRPM(el) {
     const rpm = {};
-    const uc = el.querySelector('x-slinput').value;
+    const uc = el.count;
 
     const ui = currentRace.units[el.unit];
     const upm = ui.time/60 * uc;
@@ -94,7 +95,7 @@ function getRequiredRPM(el) {
 function getTotalRequiredRPM() {
     const rr = {};
 
-    document.querySelectorAll('.unit').forEach((el) => {
+    document.querySelectorAll('#unitsBuilding x-unit-tile').forEach((el) => {
         const urr = getRequiredRPM(el);
         addObjects(rr, urr);
     });
@@ -103,8 +104,28 @@ function getTotalRequiredRPM() {
 }
 
 function addUnit(el) {
-    el.querySelector('x-slinput').value += 1;
+    let ube = unitsBuilding.querySelector(`.${el.id}`);
+
+    if (!ube) {
+        ube = document.createElement('x-unit-tile');
+        ube.unit = el.unit;
+        ube.classList.add(el.id);
+        ube.src = el.src;
+
+        unitsBuilding.appendChild(ube);
+    }
+
+    ube.count += 1;
+
     refreshUnit(el);
+}
+
+function removeUnit(el) {
+    el.count--;
+
+    if (!el.count) {
+        el.remove();
+    }
 }
 
 function refreshWorker(el) {
@@ -146,14 +167,14 @@ document.addEventListener('ph-loaded', () => {
     syncRace();
 
     document.addEventListener('click', (e) => {
-        const ue = e.target.closest('.unit');
+        if (e.target.tagName == 'X-UNIT-TILE') {
+            const ue = e.target.closest('#units');
 
-        if (!ue) {
-            return;
-        }
+            ue && addUnit(e.target);
 
-        if (e.target.tagName == 'IMG') {
-            addUnit(ue);
+            const ube = e.target.closest('#unitsBuilding');
+
+            ube && removeUnit(e.target);
         }
     });
 
