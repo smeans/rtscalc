@@ -72,7 +72,9 @@ function addObjects(a, b) {
     }
 
     for (let k in b) {
-        a[k] = (a[k] || 0) + b[k];
+        if (!(k in a)) {
+            a[k] = b[k];
+        }
     }
 
     return a;
@@ -161,8 +163,8 @@ function recalcStats() {
         db.value = rpm - rr[rn];
     });
 
-    supplyPerMinute.innerText = rr.supply;
-    netSupplyPerMinute.innerText = rr.netSupply;
+    supplyPerMinute.innerText = rr.supply || '0';
+    netSupplyPerMinute.innerText = rr.netSupply || '0';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
