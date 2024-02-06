@@ -44,6 +44,7 @@ function syncRace() {
     }
 
     unitsBuilding.innerText = '';
+    productionBuildings.innerText = '';
 
     keymap = {};
 
@@ -114,6 +115,7 @@ function addUnit(el) {
 
     if (!ube) {
         ube = document.createElement('x-unit-tile');
+        ube.title = el.unit;
         ube.unit = el.unit;
         ube.classList.add(el.id);
         ube.src = el.src;
@@ -152,6 +154,46 @@ function remaxWorkers(rr) {
     });
 }
 
+function getProdBuilding(unit) {
+    for (let un in currentRace.units) {
+        const ui = currentRace.units[un];
+
+        if (ui.produces && ui.produces.indexOf(unit) >= 0) {
+            return un;
+        }
+    }
+
+    return null;
+}
+
+function recalcProdBuildings() {
+    const rpb = {};
+
+    document.querySelectorAll('#unitsBuilding x-unit-tile').forEach((el) => {
+        const ui = currentRace.units[el.unit];
+        const pb = getProdBuilding(el.unit);
+        if (!pb) {
+            return;
+        }
+
+        rpb[pb] = (rpb[pb] || 0.0) + ui.time * el.count;
+    });
+
+    productionBuildings.innerText = '';
+
+    for (let un in rpb) {
+        const pbe = document.createElement('x-unit-tile');
+        pbe.title = un;
+        pbe.unit = un;
+        pbe.src = getUnitImgSrc(un);
+        pbe.count = Math.round((rpb[un]/60.0)*10.0)/10.0;
+
+        productionBuildings.appendChild(pbe);
+    }
+
+    console.log(rpb);
+}
+
 function recalcStats() {
     const rr = getTotalRequiredRPM();
 
@@ -165,6 +207,8 @@ function recalcStats() {
 
     supplyPerMinute.innerText = rr.supply || '0';
     netSupplyPerMinute.innerText = rr.netSupply || '0';
+
+    recalcProdBuildings(rr);
 }
 
 document.addEventListener('DOMContentLoaded', () => {

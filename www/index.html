@@ -256,17 +256,24 @@
     <p id="mainDescription"></p>
     <p><select id="currentRacePicker"></select>&nbsp;<button type="button" id="resetButton">reset</button></p>
 
-    <fieldset id="workers">
-        <h2>Mining</h2>
-        <x-hbox>
-          <img id="workerImage"/>
-          <x-vbox id="activeWorkers"></x-vbox>
-        </x-hbox>
-        <x-hbox><label>supply per minute</label>&nbsp;<span id="supplyPerMinute">0</span>&nbsp;(<span id="netSupplyPerMinute">0</span>&nbsp;net)</x-hbox>
-    </fieldset>
+    <x-hbox class="wrap">
+      <fieldset id="workers">
+          <h2>Mining</h2>
+          <x-hbox>
+            <img id="workerImage"/>
+            <x-vbox id="activeWorkers"></x-vbox>
+          </x-hbox>
+          <x-hbox><label>supply per minute</label>&nbsp;<span id="supplyPerMinute">0</span>&nbsp;(<span id="netSupplyPerMinute">0</span>&nbsp;net)</x-hbox>
+      </fieldset>
+
+      <fieldset>
+        <h2>Required Production Buildings</h2>
+        <x-units id="productionBuildings"></x-units>
+      </fieldset>
+    </x-hbox>
 
     <fieldset>
-      <h2>Building</h2>
+      <h2>Unit Production Per Minute</h2>
       <x-units id="unitsBuilding"></x-units>
     </fieldset>
 

@@ -149,8 +149,9 @@ const config = {
           "commandpost": {
             "luminite": 400,
             "therium": 0,
-            "supply": 0,
-            "time": 90
+            "supply": -15,
+            "time": 90,
+            "produces": ["bob"]
           },
           "habitat": {
             "luminite": 100,
@@ -162,13 +163,15 @@ const config = {
             "luminite": 150,
             "therium": 0,
             "supply": 0,
-            "time": 40
+            "time": 40,
+            "produces": ["scout", "lancer", "exo", "medtech"]
           },
           "mechbay": {
             "luminite": 150,
             "therium": 50,
             "supply": 0,
-            "time": 45
+            "time": 45,
+            "produces": ["atlas", "vulcan", "hedgehog"]
           },
           "scrapyard": {
             "luminite": 100,
@@ -180,7 +183,8 @@ const config = {
             "luminite": 150,
             "therium": 75,
             "supply": 0,
-            "time": 45
+            "time": 45,
+            "produces": ["hornet", "evac", "sentinel"]
           },
           "biokineticslab": {
             "luminite": 100,
