@@ -32,3 +32,48 @@ x-unit-tile {
    cursor: pointer;
    padding: 2px;
 }
+
+label {
+   padding: 5px;
+}
+
+#requiredResPro {
+   border: 2px solid #036062;
+   border-radius: 5px;
+   box-shadow: #e7eff6 0 0 10px;
+   padding: 5px;
+   gap: 10px;
+}
+
+#unitFrame {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
+   max-width: 528px;
+}
+
+#currentRacePicker {
+   color: #04080b;
+   background-color: #e7eff6;
+   border: 2px solid #036062;
+   border-radius: 5px;
+   box-shadow: #e7eff6 0 0 10px;
+   padding: 5px;
+}
+
+#resetButton {
+   cursor: pointer;
+   background-color: #036062;
+   border: 2px solid #036062;
+   border-radius: 5px;
+   box-shadow: #e7eff6 0 0 10px;
+   color: #e7eff6;
+   padding: 5px;
+   transition: all 0.3s;
+}
+
+#resetButton:hover {
+   background-color: #e7eff6;
+   border: 2px solid #e7eff6;
+   color: #036062;
+}

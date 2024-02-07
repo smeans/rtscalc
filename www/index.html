@@ -1,441 +1,468 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>RTS Calculator</title>
-    <link rel="stylesheet" href="/css/expressive.css">
-    <link rel="stylesheet" href="/css/style.css">
-  </head>
-  <body>
-    <ph-components>
-      <template name="x-slinput">
-        <style>
-          :host {
-            display: flex;
-          }
-          input[type=number] {
-            width: 3em;
-          }
-        </style>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <title>RTS Calculator</title>
+      <link rel="stylesheet" href="/css/expressive.css" />
+      <link rel="stylesheet" href="/css/style.css" />
+   </head>
+   <body>
+      <ph-components>
+         <template name="x-slinput">
+            <style>
+               :host {
+                  display: flex;
+               }
+               input[type="number"] {
+                  width: 3em;
+               }
+            </style>
 
-        <input id="num" type="number">
-        <input id="range" type="range">
+            <input id="num" type="number" />
+            <input id="range" type="range" />
 
-        <script>
-          class XSlinput extends PhElement {
-            constructor() {
-              super();
+            <script>
+               class XSlinput extends PhElement {
+                  constructor() {
+                     super();
 
-              this.shadowRoot.addEventListener('input', (e) => {
-                const el = e.target === this.g.num ? this.g.range : this.g.num;
+                     this.shadowRoot.addEventListener("input", (e) => {
+                        const el = e.target === this.g.num ? this.g.range : this.g.num;
 
-                el.value = e.target.value;
-              });
+                        el.value = e.target.value;
+                     });
 
-              this.min = 0;
-              this.max = 100;
-              this.value = 0;
-            }
+                     this.min = 0;
+                     this.max = 100;
+                     this.value = 0;
+                  }
 
-            get min() {
-              return this.g.num.min;
-            }
-  
-            set min(newMin) {
-              this.g.num.min =
-              this.g.range.min = newMin;
-            }
-  
-            get max() {
-              return this.g.num.max;
-            }
-  
-            set max(newMax) {
-              this.g.num.max =
-              this.g.range.max = newMax;
-            }
-  
-            get value() {
-              return parseInt(this.g.num.value);
-            }
-  
-            set value(newValue) {
-              this.g.num.value =
-              this.g.range.value = newValue;
-            }
-          }
-        </script>
-      </template>
+                  get min() {
+                     return this.g.num.min;
+                  }
 
-      <template name="x-unit-tile">
-        <style>
-          :host {
-            user-select: none;
-          }
-          
-          .hidden {
-            display: none !important;
-          }
+                  set min(newMin) {
+                     this.g.num.min = this.g.range.min = newMin;
+                  }
 
-          x-frame {
-            display: block;
-            position: relative;
-          }
+                  get max() {
+                     return this.g.num.max;
+                  }
 
-          img {
-            user-select: none;
-            user-drag: none;
-            -webkit-user-drag: none;
-            user-select: none;
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;            
-          }
+                  set max(newMax) {
+                     this.g.num.max = this.g.range.max = newMax;
+                  }
 
-          x-supply {
-            display: block;
-            position: absolute;
-            font-size: 120%;
-            width: 1.5em;
-            height: 1.5em;
-            left: .25rem;
-            bottom: .5rem;
-          }
+                  get value() {
+                     return parseInt(this.g.num.value);
+                  }
 
-          x-supply>* {
-            position: absolute;
-            left: 0;
-            right: 0;
-            text-align: center;
-          }
+                  set value(newValue) {
+                     this.g.num.value = this.g.range.value = newValue;
+                  }
+               }
+            </script>
+         </template>
 
-          #supply {
-            display: block;
-            font-size: 90%;
-            color: #fff;
-            line-height: 1.5;
-          }
-          
-          x-supply svg {
-            color: red;
-          }
+         <template name="x-unit-tile">
+            <style>
+               :host {
+                  user-select: none;
+               }
 
-          #badge {
-            display: block;
-            position: absolute;
-            background-color: red;
-            color: white;
-            border-radius: 50%;
-            padding: .1rem .25rem;
-            right: .25rem;
-            bottom: .5rem;
-            user-select: none;
-          }
-        </style>
-        <x-frame>
-          <img id="image"/>
-          <x-supply id="supplyIcon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-            </svg>
-            <x-label id="supply"></x-label>
-          </x-supply>
-          <x-badge id="badge">0</x-badge>
-        </x-frame>
-        <script>
-          class XUnitTile extends PhElement {
-            constructor() {
-              super();
+               .hidden {
+                  display: none !important;
+               }
 
-              this._count = 0;
-              this._syncUI();
-            }
+               x-frame {
+                  display: block;
+                  position: relative;
+               }
 
-            get src() {
-              return this.g.image.src;
-            }
+               img {
+                  user-select: none;
+                  user-drag: none;
+                  -webkit-user-drag: none;
+                  user-select: none;
+                  -moz-user-select: none;
+                  -webkit-user-select: none;
+                  -ms-user-select: none;
+               }
 
-            set src(newSrc) {
-              this.g.image.src = newSrc;
-            }
+               x-supply {
+                  display: block;
+                  position: absolute;
+                  font-size: 120%;
+                  width: 1.5em;
+                  height: 1.5em;
+                  left: 0.25rem;
+                  bottom: 0.5rem;
+               }
 
-            get title() {
-              return this.g.image.title;
-            }
+               x-supply > * {
+                  position: absolute;
+                  left: 0;
+                  right: 0;
+                  text-align: center;
+               }
 
-            set title(newTitle) {
-              this.g.image.title = newTitle;
-            }
+               #supply {
+                  display: block;
+                  font-size: 90%;
+                  color: #fff;
+                  line-height: 1.5;
+               }
 
-            get supply() {
-              return this._supply;
-            }
+               x-supply svg {
+                  color: red;
+               }
 
-            set supply(newSupply) {
-              this._supply = newSupply;
+               #badge {
+                  display: block;
+                  position: absolute;
+                  background-color: red;
+                  color: white;
+                  border-radius: 50%;
+                  padding: 0.1rem 0.25rem;
+                  right: 0.25rem;
+                  bottom: 0.5rem;
+                  user-select: none;
+               }
+            </style>
+            <x-frame>
+               <img id="image" />
+               <x-supply id="supplyIcon">
+                  <svg
+                     xmlns="http://www.w3.org/2000/svg"
+                     fill="currentColor"
+                     viewBox="0 0 24 24"
+                     stroke-width="1.5"
+                     stroke="currentColor"
+                     class="w-6 h-6"
+                  >
+                     <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                     />
+                  </svg>
+                  <x-label id="supply"></x-label>
+               </x-supply>
+               <x-badge id="badge">0</x-badge>
+            </x-frame>
+            <script>
+               class XUnitTile extends PhElement {
+                  constructor() {
+                     super();
 
-              this._syncUI();
-            }
+                     this._count = 0;
+                     this._syncUI();
+                  }
 
-            get count() {
-              return this._count;
-            }
+                  get src() {
+                     return this.g.image.src;
+                  }
 
-            set count(newCount) {
-              this._count = newCount;
-              this._syncUI();
-            }
+                  set src(newSrc) {
+                     this.g.image.src = newSrc;
+                  }
 
-            get unitInfo() {
-              return this._unitInfo;
-            }
+                  get title() {
+                     return this.g.image.title;
+                  }
 
-            set unitInfo(newUnitInfo) {
-              this._unitInfo = newUnitInfo;
-            }
+                  set title(newTitle) {
+                     this.g.image.title = newTitle;
+                  }
 
-            _syncUI() {
-              this.g.badge.innerText = this.count;
-              this.g.badge.classList.toggle('hidden', !this.count);
-              this.g.supplyIcon.style.display = !this._supply ? 'none' : 'block';
-              this.g.supply.innerText = this._supply || '';
-            }
-          }
-        </script>
-      </template>
+                  get supply() {
+                     return this._supply;
+                  }
 
-      <template name="x-delta-bar">
-        <style>
-          :host {
-            display: inline-block;
-            height: 1rem;
-          }
+                  set supply(newSupply) {
+                     this._supply = newSupply;
 
-          x-frame {
-            display: block;
-            position: relative;
-            width: 100%;
-            height: 100%;
-          }
+                     this._syncUI();
+                  }
 
-          x-bar {
-            display: block;
-            position: absolute;
-          }
+                  get count() {
+                     return this._count;
+                  }
 
-          #minusBar {
-            right: 50%;
-            top: 0;
-            height: 100%;
-            background-color: red;
-          }
+                  set count(newCount) {
+                     this._count = newCount;
+                     this._syncUI();
+                  }
 
-          #plusBar {
-            left: 50%;
-            top: 0;
-            height: 100%;
-            background-color: green;
-          }
+                  get unitInfo() {
+                     return this._unitInfo;
+                  }
 
-          label {
-            display: block;
-            position: absolute;
-            font-weight: bold;
-            color: cyan;
-            left: 0;
-            right: 0;
-          }
+                  set unitInfo(newUnitInfo) {
+                     this._unitInfo = newUnitInfo;
+                  }
 
-          #minusLabel {
-            text-align: right;
-          }
+                  _syncUI() {
+                     this.g.badge.innerText = this.count;
+                     this.g.badge.classList.toggle("hidden", !this.count);
+                     this.g.supplyIcon.style.display = !this._supply ? "none" : "block";
+                     this.g.supply.innerText = this._supply || "";
+                  }
+               }
+            </script>
+         </template>
 
-          #plusLabel {
-            text-align: left;
-          }
-        </style>
-        <x-frame>
-          <x-bar id="minusBar">
-            <label id="minusLabel"></label>
-          </x-bar>
-          <x-bar id="plusBar">
-            <label id="plusLabel"></label>
-          </x-bar>
-        </x-frame>
-        <script>
-          class XDeltaBar extends PhElement {
-            constructor() {
-              super();
+         <template name="x-delta-bar">
+            <style>
+               :host {
+                  display: inline-block;
+                  height: 1rem;
+               }
 
-              this._range = 100;
-              this._value = 0;
-            }
+               x-frame {
+                  display: block;
+                  position: relative;
+                  width: 100%;
+                  height: 100%;
+               }
 
-            get range() {
-              return this._range;
-            }
+               x-bar {
+                  display: block;
+                  position: absolute;
+               }
 
-            set range(newRange) {
-              this._range = newRange;
+               #minusBar {
+                  right: 50%;
+                  top: 0;
+                  height: 100%;
+                  background-color: red;
+               }
 
-              this._syncUI();
-            }
+               #plusBar {
+                  left: 50%;
+                  top: 0;
+                  height: 100%;
+                  background-color: green;
+               }
 
-            get value() {
-              return this._value;
-            }
+               label {
+                  display: block;
+                  position: absolute;
+                  font-weight: bold;
+                  color: cyan;
+                  left: 0;
+                  right: 0;
+               }
 
-            set value(newValue) {
-              this._value = newValue;
-              this._syncUI();
-            }
+               #minusLabel {
+                  text-align: right;
+               }
 
-            _syncUI() {
-              this.g.minusBar.style.width = this._value < 0 ? (Math.abs(this._value)/this._range)*50.0 + '%' : '0';
-              this.g.minusLabel.innerText = this._value < 0 ? this._value : '';
-              this.g.plusBar.style.width = this._value > 0 ? (Math.abs(this._value)/this._range)*50.0 + '%' : '0';
-              this.g.plusLabel.innerText = this._value > 0 ? this._value : '';
-            }
-          }
-        </script>
-      </template>
+               #plusLabel {
+                  text-align: left;
+               }
+            </style>
+            <x-frame>
+               <x-bar id="minusBar">
+                  <label id="minusLabel"></label>
+               </x-bar>
+               <x-bar id="plusBar">
+                  <label id="plusLabel"></label>
+               </x-bar>
+            </x-frame>
+            <script>
+               class XDeltaBar extends PhElement {
+                  constructor() {
+                     super();
 
-      <template name="x-ui-frame">
-        <style>
-          table {
-            padding: 0;
-            margin: 0;
-          }
+                     this._range = 100;
+                     this._value = 0;
+                  }
 
-          #tl, #tr,
-          #bl, #br {
-            background-repeat: no-repeat;
-          }
+                  get range() {
+                     return this._range;
+                  }
 
-          #t, #b {
-            background-repeat: repeat-x;
-          }
+                  set range(newRange) {
+                     this._range = newRange;
 
-          #l, #r {
-            background-repeat: repeat-y;
-          }
-          
-          img {
-            opacity: 0;
-          }
-        </style>
-        <table cellpadding="0" cellspacing="0">
-          <tbody>
-            <tr>
-              <td id="tl"></td>
-              <td id="t"><img/></td>
-              <td id="tr"></td>
-            </tr>
-            <tr>
-              <td id="l"><img/></td>
-              <td id="content"><slot></slot></td>
-              <td id="r"><img/></td>
-            </tr>
-            <tr>
-              <td id="bl"></td>
-              <td id="b"><img/></td>
-              <td id="br"></td>
-            </tr>
-          </tbody>
-        </table>
-        <script>
-          class XUiFrame extends PhElement {
-            constructor() {
-              super();
-            }
+                     this._syncUI();
+                  }
 
-            get base() {
-              return this._base;
-            }
+                  get value() {
+                     return this._value;
+                  }
 
-            set base(newBase) {
-              this._base = newBase;
+                  set value(newValue) {
+                     this._value = newValue;
+                     this._syncUI();
+                  }
 
-              this._syncUI();
-            }
+                  _syncUI() {
+                     this.g.minusBar.style.width =
+                        this._value < 0 ? (Math.abs(this._value) / this._range) * 50.0 + "%" : "0";
+                     this.g.minusLabel.innerText = this._value < 0 ? this._value : "";
+                     this.g.plusBar.style.width =
+                        this._value > 0 ? (Math.abs(this._value) / this._range) * 50.0 + "%" : "0";
+                     this.g.plusLabel.innerText = this._value > 0 ? this._value : "";
+                  }
+               }
+            </script>
+         </template>
 
-            _syncUI() {
-              this.sqa('td').forEach((td) => {
-                if (td.id == 'content') {
-                  return;
-                }
+         <template name="x-ui-frame">
+            <style>
+               table {
+                  padding: 0;
+                  margin: 0;
+               }
 
-                const url = `${this._base}_${td.id}.png`;
-                td.style.backgroundImage = `url(${url})`;
-                const ie = td.querySelector('img');
-                if (ie) {
-                  ie.src = url;
-                }
-              });
-            }
-          }
-        </script>
-      </template>
-    </ph-components>
-    <h1 id="mainTitle"></h1>
-    <p id="mainDescription"></p>
-    <p><select id="currentRacePicker"></select>&nbsp;<button type="button" id="resetButton">reset</button></p>
+               #tl,
+               #tr,
+               #bl,
+               #br {
+                  background-repeat: no-repeat;
+               }
 
-    <x-hbox class="wrap">
-      <x-ui-frame id="workersFrame">
-        <fieldset id="workers">
-            <x-hbox><h2>Mining</h2><x-spacer></x-spacer><label><input type="checkbox" id="autoBalanceWorkers">&nbsp;auto-balance workers</label></x-hbox>
-            <x-hbox>
-              <img id="workerImage"/>
-              <x-vbox id="activeWorkers"></x-vbox>
-            </x-hbox>
-            <x-hbox><label>supply per minute</label>&nbsp;<span id="supplyPerMinute">0</span>&nbsp;(<span id="netSupplyPerMinute">0</span>&nbsp;net)</x-hbox>
-        </fieldset>
-      </x-ui-frame>
+               #t,
+               #b {
+                  background-repeat: repeat-x;
+               }
 
-      <x-ui-frame id="pbFrame">
-        <fieldset>
-          <h2>Required Production Buildings</h2>
-          <x-units id="productionBuildings"></x-units>
-        </fieldset>
-      </x-ui-frame>
-    </x-hbox>
+               #l,
+               #r {
+                  background-repeat: repeat-y;
+               }
 
-    <x-ui-frame id="uppmFrame">
-      <fieldset>
-        <h2>Unit Production Per Minute</h2>
-        <x-units id="unitsBuilding"></x-units>
-      </fieldset>
-    </x-ui-frame>
+               img {
+                  opacity: 0;
+               }
+            </style>
+            <table cellpadding="0" cellspacing="0">
+               <tbody>
+                  <tr>
+                     <td id="tl"></td>
+                     <td id="t"><img /></td>
+                     <td id="tr"></td>
+                  </tr>
+                  <tr>
+                     <td id="l"><img /></td>
+                     <td id="content"><slot></slot></td>
+                     <td id="r"><img /></td>
+                  </tr>
+                  <tr>
+                     <td id="bl"></td>
+                     <td id="b"><img /></td>
+                     <td id="br"></td>
+                  </tr>
+               </tbody>
+            </table>
+            <script>
+               class XUiFrame extends PhElement {
+                  constructor() {
+                     super();
+                  }
 
-    <x-ui-frame id="unitFrame">
-      <fieldset>
-        <h2>Units</h2>
-        <x-units id="units"></x-units>
-      </fieldset>
-    </x-ui-frame>
+                  get base() {
+                     return this._base;
+                  }
 
-    <template id="activeWorkerTemplate">
-      <x-hbox class="worker">
-        <x-vbox>
-          <x-hbox>
-            <label></label>
-            <x-slinput></x-slinput>
-            <x-hbox><span class="rpm">0</span>/min.</x-hbox>
-          </x-hbox>
-          <x-delta-bar></x-delta-bar>
-        </x-vbox>
+                  set base(newBase) {
+                     this._base = newBase;
+
+                     this._syncUI();
+                  }
+
+                  _syncUI() {
+                     this.sqa("td").forEach((td) => {
+                        if (td.id == "content") {
+                           return;
+                        }
+
+                        const url = `${this._base}_${td.id}.png`;
+                        td.style.backgroundImage = `url(${url})`;
+                        const ie = td.querySelector("img");
+                        if (ie) {
+                           ie.src = url;
+                        }
+                     });
+                  }
+               }
+            </script>
+         </template>
+      </ph-components>
+      <h1 id="mainTitle"></h1>
+      <p id="mainDescription"></p>
+      <p>
+         <select id="currentRacePicker"></select
+         >&nbsp;<button type="button" id="resetButton">Reset</button>
+      </p>
+
+      <x-hbox id="requiredResPro" class="wrap">
+         <x-ui-frame id="workersFrame">
+            <fieldset id="workers">
+               <x-hbox
+                  ><h2>Mining</h2>
+                  <x-spacer></x-spacer
+                  ><label
+                     ><input type="checkbox" id="autoBalanceWorkers" />&nbsp;auto-balance
+                     workers</label
+                  ></x-hbox
+               >
+               <x-hbox>
+                  <img id="workerImage" />
+                  <x-vbox id="activeWorkers"></x-vbox>
+               </x-hbox>
+               <x-hbox
+                  ><label>supply per minute</label>&nbsp;<span id="supplyPerMinute">0</span
+                  >&nbsp;(<span id="netSupplyPerMinute">0</span>&nbsp;net)</x-hbox
+               >
+            </fieldset>
+         </x-ui-frame>
+
+         <x-ui-frame id="pbFrame">
+            <fieldset>
+               <h2>Required Production Buildings</h2>
+               <x-units id="productionBuildings"></x-units>
+            </fieldset>
+         </x-ui-frame>
       </x-hbox>
-    </template>
 
-    <template id="unitTemplate">
-      <x-unit-tile></x-unit-tile>
-    </template>
+      <x-hbox class="flex">
+         <x-ui-frame id="unitFrame">
+            <fieldset>
+               <h2>Units</h2>
+               <x-units id="units"></x-units>
+            </fieldset>
+         </x-ui-frame>
+         <x-ui-frame id="uppmFrame">
+            <fieldset>
+               <h2>Unit Production Per Minute</h2>
+               <x-units id="unitsBuilding"></x-units>
+            </fieldset>
+         </x-ui-frame>
+      </x-hbox>
+      <template id="activeWorkerTemplate">
+         <x-hbox class="worker">
+            <x-vbox>
+               <x-hbox>
+                  <label></label>
+                  <x-slinput></x-slinput>
+                  <x-hbox><span class="rpm">0</span>/min.</x-hbox>
+               </x-hbox>
+               <x-delta-bar></x-delta-bar>
+            </x-vbox>
+         </x-hbox>
+      </template>
 
-	<script src="/js/stormgate.js"></script>
-	<script src="/js/main.js"></script>
-  <script src="/js/ph.js"></script>
-  </body>
+      <template id="unitTemplate">
+         <x-unit-tile></x-unit-tile>
+      </template>
+
+      <script src="/js/stormgate.js"></script>
+      <script src="/js/main.js"></script>
+      <script src="/js/ph.js"></script>
+   </body>
 </html>
