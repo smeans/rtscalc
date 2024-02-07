@@ -90,6 +90,32 @@
             -ms-user-select: none;            
           }
 
+          x-supply {
+            display: block;
+            position: absolute;
+            font-size: 120%;
+            width: 1em;
+            height: 1em;
+            left: .25rem;
+            bottom: .5rem;
+          }
+
+          x-supply>* {
+            position: absolute;
+            left: 0;
+            right: 0;
+            text-align: center;
+          }
+
+          #supply {
+            font-size: 90%;
+            color: #fff;
+          }
+          
+          x-supply svg {
+            color: red;
+          }
+
           #badge {
             display: block;
             position: absolute;
@@ -104,6 +130,12 @@
         </style>
         <x-frame>
           <img id="image"/>
+          <x-supply id="supplyIcon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+            </svg>
+            <span id="supply"></span>
+          </x-supply>
           <x-badge id="badge">0</x-badge>
         </x-frame>
         <script>
@@ -112,7 +144,7 @@
               super();
 
               this._count = 0;
-              this._refreshUI();
+              this._syncUI();
             }
 
             get src() {
@@ -131,13 +163,23 @@
               this.g.image.title = newTitle;
             }
 
+            get supply() {
+              return this._supply;
+            }
+
+            set supply(newSupply) {
+              this._supply = newSupply;
+
+              this._syncUI();
+            }
+
             get count() {
               return this._count;
             }
 
             set count(newCount) {
               this._count = newCount;
-              this._refreshUI();
+              this._syncUI();
             }
 
             get unitInfo() {
@@ -148,9 +190,11 @@
               this._unitInfo = newUnitInfo;
             }
 
-            _refreshUI() {
+            _syncUI() {
               this.g.badge.innerText = this.count;
               this.g.badge.classList.toggle('hidden', !this.count);
+              this.g.supplyIcon.style.display = this._supply === undefined ? 'none' : 'block';
+              this.g.supply.innerText = this._supply || '';
             }
           }
         </script>
@@ -251,36 +295,118 @@
           }
         </script>
       </template>
+
+      <template name="x-ui-frame">
+        <style>
+          table {
+            padding: 0;
+            margin: 0;
+          }
+
+          #tl, #tr,
+          #bl, #br {
+            background-repeat: no-repeat;
+          }
+
+          #t, #b {
+            background-repeat: repeat-x;
+          }
+
+          #l, #r {
+            background-repeat: repeat-y;
+          }
+          
+          img {
+            opacity: 0;
+          }
+        </style>
+        <table>
+          <tbody>
+            <tr>
+              <td id="tl"><img/></td>
+              <td id="t"><img/></td>
+              <td id="tr"><img/></td>
+            </tr>
+            <tr>
+              <td id="l"><img/></td>
+              <td id="content"><slot></slot></td>
+              <td id="r"><img/></td>
+            </tr>
+            <tr>
+              <td id="bl"><img/></td>
+              <td id="b"><img/></td>
+              <td id="br"><img/></td>
+            </tr>
+          </tbody>
+        </table>
+        <script>
+          class XUiFrame extends PhElement {
+            constructor() {
+              super();
+            }
+
+            get base() {
+              return this._base;
+            }
+
+            set base(newBase) {
+              this._base = newBase;
+
+              this._syncUI();
+            }
+
+            _syncUI() {
+              this.sqa('td').forEach((td) => {
+                if (td.id == 'content') {
+                  return;
+                }
+
+                const url = `${this._base}_${td.id}.png`;
+                td.style.backgroundImage = `url(${url})`;
+                td.querySelector('img').src = url;
+              });
+            }
+          }
+        </script>
+      </template>
     </ph-components>
     <h1 id="mainTitle"></h1>
     <p id="mainDescription"></p>
     <p><select id="currentRacePicker"></select>&nbsp;<button type="button" id="resetButton">reset</button></p>
 
     <x-hbox class="wrap">
-      <fieldset id="workers">
-          <h2>Mining</h2>
-          <x-hbox>
-            <img id="workerImage"/>
-            <x-vbox id="activeWorkers"></x-vbox>
-          </x-hbox>
-          <x-hbox><label>supply per minute</label>&nbsp;<span id="supplyPerMinute">0</span>&nbsp;(<span id="netSupplyPerMinute">0</span>&nbsp;net)</x-hbox>
-      </fieldset>
+      <x-ui-frame id="workersFrame">
+        <fieldset id="workers">
+            <h2>Mining</h2>
+            <x-hbox>
+              <img id="workerImage"/>
+              <x-vbox id="activeWorkers"></x-vbox>
+            </x-hbox>
+            <x-hbox><label>supply per minute</label>&nbsp;<span id="supplyPerMinute">0</span>&nbsp;(<span id="netSupplyPerMinute">0</span>&nbsp;net)</x-hbox>
+        </fieldset>
+      </x-ui-frame>
 
-      <fieldset>
-        <h2>Required Production Buildings</h2>
-        <x-units id="productionBuildings"></x-units>
-      </fieldset>
+      <x-ui-frame id="pbFrame">
+        <fieldset>
+          <h2>Required Production Buildings</h2>
+          <x-units id="productionBuildings"></x-units>
+        </fieldset>
+      </x-ui-frame>
     </x-hbox>
 
-    <fieldset>
-      <h2>Unit Production Per Minute</h2>
-      <x-units id="unitsBuilding"></x-units>
-    </fieldset>
+    <x-ui-frame id="uppmFrame">
+      <fieldset>
+        <h2>Unit Production Per Minute</h2>
+        <x-units id="unitsBuilding"></x-units>
+      </fieldset>
+    </x-ui-frame>
 
-    <fieldset>
-      <h2>Units</h2>
-      <x-units id="units"></x-units>
-    </fieldset>
+    <x-ui-frame id="unitFrame">
+      <fieldset>
+        <h2>Units</h2>
+        <x-units id="units"></x-units>
+      </fieldset>
+    </x-ui-frame>
 
     <template id="activeWorkerTemplate">
       <x-hbox class="worker">

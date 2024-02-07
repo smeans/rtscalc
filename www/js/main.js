@@ -11,6 +11,10 @@ function getUnitImgSrc(unit) {
     return `/images/${config.info.id}/${unit}.png`;
 }
 
+function getFrameImageBase(name) {
+    return `/images/${config.info.id}/frames/${name}`;
+}
+
 let keymap;
 let resources;
 
@@ -18,6 +22,10 @@ function syncRace() {
     currentRace = config.races[currentRacePicker.value];
 
     workerImage.src = getUnitImgSrc(currentRace.workers.name)
+
+    workersFrame.base = getFrameImageBase('worker');
+    pbFrame.base = getFrameImageBase('pb');
+    uppmFrame.base = getFrameImageBase('uppm');
 
     activeWorkers.innerText = '';
     supplyPerMinute.innerText = '0';
@@ -54,6 +62,7 @@ function syncRace() {
 
         el.src = getUnitImgSrc(name);
         el.title = name;
+        el.supply = currentRace.units[name].supply;
 
         el.id = `unit${name}`;
 
@@ -257,6 +266,10 @@ document.addEventListener('ph-loaded', () => {
 
         const ue = e.target.closest('.unit');
         ue && refreshUnit(ue);
+    });
+
+    currentRacePicker.addEventListener('input', () => {
+        syncRace();
     });
 
     resetButton.addEventListener('click', (e) => {
