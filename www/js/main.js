@@ -159,8 +159,8 @@ function remaxWorkers(rr) {
         const re = document.querySelector(`#resource${rn}`);
         const si = re.querySelector('x-slinput');
         const rw = Math.ceil(rr[rn]/currentRace.workers.rpm[rn]);
-        si.value = Math.max(si.value, rw);
-        refreshWorker(re);
+        si.value = rw;
+        re.querySelector('.rpm').innerText = re.querySelector('x-slinput').value * re.rpm;
     });
 }
 
@@ -206,6 +206,14 @@ function recalcProdBuildings() {
 
 function recalcStats() {
     const rr = getTotalRequiredRPM();
+
+    if (!Object.keys(rr).length) {
+        return;
+    }
+
+    if (autoBalanceWorkers.checked) {
+        remaxWorkers(rr);
+    }
 
     resources.forEach((rn) => {
         const re = document.querySelector(`#resource${rn}`);
@@ -275,5 +283,9 @@ document.addEventListener('ph-loaded', () => {
 
     resetButton.addEventListener('click', (e) => {
        syncRace();
+    });
+
+    autoBalanceWorkers.addEventListener('input', (e) => {
+        recalcStats();
     });
 });
