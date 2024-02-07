@@ -1,19 +1,34 @@
-html, body {
-    background-color: #000;
-    color: #fff;
+html,
+body {
+   background-color: #04080b;
+   color: #e7eff6;
+   font-family: Oswald, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
 }
 
 fieldset {
-    border: none;
+   border: none;
 }
 
 x-units {
-    display: flex;
-    flex-wrap: wrap;
-    min-height: 70px;
+   display: flex;
+   flex-wrap: wrap;
+   min-height: 70px;
 }
 
 img {
-    user-select: none;
-    -webkit-user-drag: none;
+   user-select: none;
+   -webkit-user-drag: none;
+}
+
+#mainTitle {
+   background-image: linear-gradient(to bottom, #fff, #85afd0);
+   -webkit-background-clip: text;
+   background-clip: text;
+   color: transparent;
+   -webkit-text-fill-color: transparent;
+}
+
+x-unit-tile {
+   cursor: pointer;
+   padding: 2px;
 }

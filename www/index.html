@@ -329,9 +329,9 @@
         <table cellpadding="0" cellspacing="0">
           <tbody>
             <tr>
-              <td id="tl"><img/></td>
+              <td id="tl"></td>
               <td id="t"><img/></td>
-              <td id="tr"><img/></td>
+              <td id="tr"></td>
             </tr>
             <tr>
               <td id="l"><img/></td>
@@ -339,9 +339,9 @@
               <td id="r"><img/></td>
             </tr>
             <tr>
-              <td id="bl"><img/></td>
+              <td id="bl"></td>
               <td id="b"><img/></td>
-              <td id="br"><img/></td>
+              <td id="br"></td>
             </tr>
           </tbody>
         </table>
@@ -369,7 +369,10 @@
 
                 const url = `${this._base}_${td.id}.png`;
                 td.style.backgroundImage = `url(${url})`;
-                td.querySelector('img').src = url;
+                const ie = td.querySelector('img');
+                if (ie) {
+                  ie.src = url;
+                }
               });
             }
           }
@@ -383,7 +386,7 @@
     <x-hbox class="wrap">
       <x-ui-frame id="workersFrame">
         <fieldset id="workers">
-            <h2>Mining</h2>
+            <x-hbox><h2>Mining</h2><x-spacer></x-spacer><label><input type="checkbox" id="autoBalanceWorkers">&nbsp;auto-balance workers</label></x-hbox>
             <x-hbox>
               <img id="workerImage"/>
               <x-vbox id="activeWorkers"></x-vbox>
