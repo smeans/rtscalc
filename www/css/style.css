@@ -37,8 +37,12 @@ x-unit-tile {
    transition: all 0.1s;
 }
 
-x-unit-tile:hover {
+x-unit-tile.infernals-hover:hover {
    box-shadow: #a83100 0 0 10px;
+}
+
+x-unit-tile.vanguard-hover:hover {
+   box-shadow: #4079a4 0 0 10px;
 }
 
 x-unit-tile:active {
