@@ -49,6 +49,11 @@ x-unit-tile:active {
    transform: translateY(4px);
 }
 
+#productionBuildings > x-unit-tile {
+   transform: none;
+   cursor: default;
+}
+
 label {
    padding: 5px;
 }
