@@ -26,6 +26,7 @@ function syncRace() {
     workersFrame.base = getFrameImageBase('worker');
     pbFrame.base = getFrameImageBase('pb');
     uppmFrame.base = getFrameImageBase('uppm');
+    unitFrame.base = getFrameImageBase('unit');
 
     activeWorkers.innerText = '';
     supplyPerMinute.innerText = '0';
