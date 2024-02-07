@@ -165,11 +165,11 @@ function remaxWorkers(rr) {
 }
 
 function getProdBuilding(unit) {
-    for (let un in currentRace.units) {
-        const ui = currentRace.units[un];
+    for (let bn in currentRace.buildings) {
+        const bi = currentRace.buildings[bn];
 
-        if (ui.produces && ui.produces.indexOf(unit) >= 0) {
-            return un;
+        if (bi.produces && bi.produces.indexOf(unit) >= 0) {
+            return bn;
         }
     }
 
