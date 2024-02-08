@@ -65,9 +65,9 @@ label {
 }
 
 #requiredResPro {
-   border: 2px solid #036062;
+   /* border: 2px solid #036062;
    border-radius: 5px;
-   box-shadow: #e7eff6 0 0 10px;
+   box-shadow: #e7eff6 0 0 10px; */
    padding: 5px;
    margin: 15px;
    gap: 10px;
@@ -80,7 +80,7 @@ label {
    max-width: 528px;
 }
 
-#currentRacePicker {
+#currentRacePicker.vanguard-pick {
    color: #04080b;
    background-color: #e7eff6;
    border: 2px solid #036062;
@@ -90,11 +90,25 @@ label {
    transition: all 0.3s;
 }
 
-#currentRacePicker:hover {
+#currentRacePicker.vanguard-pick:hover {
    box-shadow: #036062 0 0 10px;
 }
 
-#resetButton {
+#currentRacePicker.infernals-pick {
+   color: #04080b;
+   background-color: #e7eff6;
+   border: 2px solid #a10000;
+   border-radius: 5px;
+   box-shadow: #e7eff6 0 0 10px;
+   padding: 5px;
+   transition: all 0.3s;
+}
+
+#currentRacePicker.infernals-pick:hover {
+   box-shadow: #a10000 0 0 10px;
+}
+
+#resetButton.vanguard-reset {
    cursor: pointer;
    background-color: #036062;
    border: 2px solid #036062;
@@ -106,13 +120,37 @@ label {
    font-size: 16px;
 }
 
-#resetButton:hover {
+#resetButton.vanguard-reset:hover {
    background-color: #e7eff6;
    border: 2px solid #e7eff6;
    color: #036062;
 }
 
-#resetButton:active {
+#resetButton.vanguard-reset:active {
    box-shadow: #036062 0 0 10px;
+   transform: translateY(4px);
+}
+
+#resetButton.infernals-reset {
+   cursor: pointer;
+   background-color: #a10000;
+   border: 2px solid #a10000;
+   border-radius: 5px;
+   box-shadow: #a10000 0 0 10px;
+   color: #e3b3b3;
+   padding: 8px;
+   transition: all 0.3s;
+   font-size: 16px;
+}
+
+#resetButton.infernals-reset:hover {
+   background-color: #f6e6e6;
+   border: 2px solid #f6e6e6;
+   color: #200000;
+   box-shadow: #f6e6e6 0 0 10px;
+}
+
+#resetButton.infernals-reset:active {
+   box-shadow: #a10000 0 0 10px;
    transform: translateY(4px);
 }
