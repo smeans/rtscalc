@@ -80,6 +80,11 @@ label {
    max-width: 528px;
 }
 
+#currentRacePicker,
+#currentRacePicker option {
+   text-transform: capitalize;
+}
+
 #currentRacePicker.vanguard-pick {
    color: #04080b;
    background-color: #e7eff6;
