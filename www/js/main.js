@@ -88,7 +88,7 @@ function syncRace() {
 
         el.src = getUnitImgSrc(name);
         el.title = name;
-        el.supply = currentRace.units[name].supply;
+        el.unitInfo = currentRace.units[name];
 
         el.id = `unit${name}`;
 
@@ -153,6 +153,7 @@ function addUnit(el) {
         ube = document.createElement('x-unit-tile');
         ube.title = el.unit;
         ube.unit = el.unit;
+        ube.unitInfo = el.unitInfo;
         ube.classList.add(el.id);
         ube.src = el.src;
 
@@ -221,6 +222,7 @@ function recalcProdBuildings() {
         const pbe = document.createElement('x-unit-tile');
         pbe.title = un;
         pbe.unit = un;
+        pbe.unitInfo = currentRace.buildings[un];
         pbe.src = getUnitImgSrc(un);
         pbe.count = rpb[un];
 
