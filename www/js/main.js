@@ -44,8 +44,8 @@ function syncRace() {
     const dss = Object.values(currentRace.buildings).filter((b) => b.defaultSupply).pop();
 
     if (dss) {
-        ssPerMinuteTile.title = dss.name;
         ssPerMinuteTile.unit = dss.name;
+        ssPerMinuteTile.unitInfo = dss;
         ssPerMinuteTile.src = getUnitImgSrc(dss.name);    
         ssPerMinuteTile.count = 0;
         
@@ -87,7 +87,6 @@ function syncRace() {
         const el = cloneTemplate(unitTemplate);
 
         el.src = getUnitImgSrc(name);
-        el.title = name;
         el.unitInfo = currentRace.units[name];
 
         el.id = `unit${name}`;
@@ -151,7 +150,6 @@ function addUnit(el) {
 
     if (!ube) {
         ube = document.createElement('x-unit-tile');
-        ube.title = el.unit;
         ube.unit = el.unit;
         ube.unitInfo = el.unitInfo;
         ube.classList.add(el.id);
