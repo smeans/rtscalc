@@ -27,55 +27,55 @@ const config = {
           "luminite": 50,
           "therium": 0,
           "supply": 1,
-          "time": 17
+          "time": 17.5
         },
         "brute": {
           "luminite": 150,
           "therium": 0,
           "supply": 3,
-          "time": 35
+          "time": 35.5
         },
         "gaunt": {
           "luminite": 50,
           "therium": 15,
           "supply": 1,
-          "time": 35
+          "time": 35.5
         },
         "magmadon": {
           "luminite": 250,
           "therium": 150,
           "supply": 6,
-          "time": 35
+          "time": 35.5
         },
         "hellborne": {
           "luminite": 150,
           "therium": 150,
           "supply": 5,
-          "time": 35
+          "time": 35.5
         },
         "doombringer": {
           "luminite": 100,
           "therium": 150,
           "supply": 4,
-          "time": 35
+          "time": 35.5
         },
         "weaver": {
           "luminite": 100,
           "therium": 150,
           "supply": 4,
-          "time": 35
+          "time": 35.5
         },
         "shadowflyer": {
           "luminite": 25,
           "therium": 50,
           "supply": 1,
-          "time": 35
+          "time": 35.5
         },
         "spriggan": {
           "luminite": 75,
           "therium": 75,
           "supply": 3,
-          "time": 35
+          "time": 35.5
         },
         "shrine": {
           "luminite": 350,
