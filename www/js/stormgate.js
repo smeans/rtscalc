@@ -27,7 +27,7 @@ const config = {
           "luminite": 50,
           "therium": 0,
           "supply": 1,
-          "time": 12
+          "time": 17
         },
         "brute": {
           "luminite": 150,
