@@ -25,7 +25,7 @@ function syncRace() {
 
     workersFrame.base = getFrameImageBase('worker');
     pbFrame.base = getFrameImageBase('pb');
-    uppmFrame.base = getFrameImageBase('uppm');
+    cupFrame.base = getFrameImageBase('uppm');
     unitFrame.base = getFrameImageBase('unit');
 
     activeWorkers.innerText = '';
@@ -92,18 +92,19 @@ function addObjects(a, b) {
 }
 
 function getRequiredRPM(el) {
-    const rpm = {};
-    const upm = el.count;
-
     const ui = currentRace.units[el.unit];
+
+    const rpm = {};
+    const upm = el.count * (60/ui.time);
+
     resources.forEach((rn) => {
         if (rn in ui) {
-            rpm[rn] = ui[rn] * upm;
+            rpm[rn] = Math.round(ui[rn] * upm);
         }
     });
 
-    rpm.supply = (ui.supply > 0 ? ui.supply : 0) * upm;
-    rpm.netSupply = ui.supply * upm;
+    rpm.supply = Math.round((ui.supply > 0 ? ui.supply : 0) * upm);
+    rpm.netSupply = Math.round(ui.supply * upm);
 
     console.log(el.unit, rpm);
     return rpm;
@@ -186,7 +187,7 @@ function recalcProdBuildings() {
             return;
         }
 
-        rpb[pb] = (rpb[pb] || 0.0) + ui.time * el.count;
+        rpb[pb] = (rpb[pb] || 0.0) + el.count;
     });
 
     productionBuildings.innerText = '';
@@ -196,7 +197,7 @@ function recalcProdBuildings() {
         pbe.title = un;
         pbe.unit = un;
         pbe.src = getUnitImgSrc(un);
-        pbe.count = Math.round((rpb[un]/60.0)*10.0)/10.0;
+        pbe.count = rpb[un];
 
         productionBuildings.appendChild(pbe);
     }
