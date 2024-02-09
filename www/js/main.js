@@ -18,8 +18,19 @@ function getFrameImageBase(name) {
 let keymap;
 let resources;
 
+function patchNames(d) {
+    for (const k in d) {
+        if (!d[k].name) {
+            d[k].name = k;
+        }
+    }
+}
+
 function syncRace() {
     currentRace = config.races[currentRacePicker.value];
+    patchNames(currentRace.units);
+    patchNames(currentRace.upgrades);
+    patchNames(currentRace.buildings);
 
     workerImage.src = getUnitImgSrc(currentRace.workers.name)
 
@@ -29,6 +40,20 @@ function syncRace() {
     unitFrame.base = getFrameImageBase('unit');
 
     activeWorkers.innerText = '';
+
+    const dss = Object.values(currentRace.buildings).filter((b) => b.defaultSupply).pop();
+
+    if (dss) {
+        ssPerMinuteTile.title = dss.name;
+        ssPerMinuteTile.unit = dss.name;
+        ssPerMinuteTile.src = getUnitImgSrc(dss.name);    
+        ssPerMinuteTile.count = 0;
+        
+        ssPerMinuteTile.style.display = 'inline';
+    } else {
+        ssPerMinuteTile.style.display = 'none';
+    }
+
     supplyPerMinute.innerText = '0';
 
     resources = Object.keys(currentRace.workers.rpm);
@@ -224,6 +249,9 @@ function recalcStats() {
         db.value = rpm - rr[rn];
     });
 
+    const ss = currentRace.buildings[ssPerMinuteTile.unit];
+
+    ssPerMinuteTile.count = Math.ceil(rr.supply / ((60.0/ss.time)*Math.abs(ss.supply)));
     supplyPerMinute.innerText = rr.supply || '0';
     netSupplyPerMinute.innerText = rr.netSupply || '0';
 

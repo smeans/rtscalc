@@ -404,8 +404,8 @@
       <x-hbox id="requiredResPro" class="wrap">
          <x-ui-frame id="workersFrame">
             <fieldset id="workers">
-               <x-hbox
-                  ><h2>Mining</h2>
+               <x-hbox>
+                  <h2>Mining</h2>
                   <x-spacer></x-spacer
                   ><label
                      ><input type="checkbox" id="autoBalanceWorkers" />&nbsp;auto-balance
@@ -416,10 +416,11 @@
                   <img id="workerImage" />
                   <x-vbox id="activeWorkers"></x-vbox>
                </x-hbox>
-               <x-hbox
-                  ><label>supply per minute</label>&nbsp;<span id="supplyPerMinute">0</span
-                  >&nbsp;(<span id="netSupplyPerMinute">0</span>&nbsp;net)</x-hbox
-               >
+               <x-hbox>
+                  <x-unit-tile id="ssPerMinuteTile"></x-unit-tile>
+                  <label>supply per minute</label>&nbsp;<span id="supplyPerMinute">0</span>
+                     &nbsp;(<span id="netSupplyPerMinute">0</span>&nbsp;net)
+               </x-hbox>
             </fieldset>
          </x-ui-frame>
 

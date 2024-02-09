@@ -134,7 +134,8 @@ const config = {
           "luminite": 50,
           "therium": 0,
           "supply": -15,
-          "time": 20
+          "time": 20,
+          "defaultSupply": true
         },
         "iron_vault": {
           "luminite": 100,
@@ -341,7 +342,8 @@ const config = {
           "luminite": 100,
           "therium": 0,
           "supply": -15,
-          "time": 20
+          "time": 20,
+          "defaultSupply": true
         },
         "barracks": {
           "luminite": 150,
