@@ -12,3 +12,5 @@
 - Patch/version info
 - Help/How-to menu
 - ~~Can we make it so the first letter is uppercase in the dropdown, or make the whole word uppercase?~~
+- Unit stats in mouseover tooltip
+- Have artist make new frames
