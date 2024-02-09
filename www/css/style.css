@@ -113,6 +113,15 @@ label {
    box-shadow: #a10000 0 0 10px;
 }
 
+#ssPerMinuteTile:hover {
+   box-shadow: none;
+   cursor: default;
+}
+
+#ssPerMinuteTile:active {
+   transform: none;
+}
+
 #resetButton.vanguard-reset {
    cursor: pointer;
    background-color: #036062;
