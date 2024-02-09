@@ -251,7 +251,7 @@ function recalcStats() {
 
     const ss = currentRace.buildings[ssPerMinuteTile.unit];
 
-    ssPerMinuteTile.count = Math.ceil(rr.supply / ((60.0/ss.time)*Math.abs(ss.supply)));
+    ssPerMinuteTile.count = Math.ceil(Math.max(0, rr.netSupply) / ((60.0/ss.time)*Math.abs(ss.supply)));
     supplyPerMinute.innerText = rr.supply || '0';
     netSupplyPerMinute.innerText = rr.netSupply || '0';
 
