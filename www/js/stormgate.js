@@ -14,6 +14,7 @@ const config = {
   },
   "races": {
     "infernals": {
+      "name": "infernals",
       "workers": {
         "name": "imp",
         "rpm": {
@@ -181,6 +182,7 @@ const config = {
       }
     },
     "vanguard": {
+      "name": "vanguard",
       "workers": {
         "name": "bob",
         "rpm": {

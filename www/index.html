@@ -150,6 +150,10 @@
                x-stats label {
                   color: cyan;
                }
+
+               x-stat {
+                  display: block;
+               }
             </style>
             <x-frame>
                <img id="image" />
@@ -179,14 +183,6 @@
 
                      this._count = 0;
                      this._syncUI();
-                  }
-
-                  get src() {
-                     return this.g.image.src;
-                  }
-
-                  set src(newSrc) {
-                     this.g.image.src = newSrc;
                   }
 
                   get title() {
@@ -230,13 +226,28 @@
                      let html = '';
 
                      for (const k in this._unitInfo ?? {}){
-                        html += `<x-stat><label>${k}</label>&nbsp;${this._unitInfo[k]}</x-stat>`;
+                        switch (k) {
+                           case 'name': {
+                              html += `<x-stat><h3>${this._unitInfo[k]}</h3></x-stat>`;
+                           } break;
+
+                           case 'supply': {
+                              html += `<x-stat><img title="${k}" src="${imageBase ?? ''}/${currentRace.name}_${k}.png"/>&nbsp;${this._unitInfo[k]}</x-stat>`;
+                           } break;
+
+                           case 'defaultSupply': break;
+
+                           default: {
+                              html += `<x-stat><img title="${k}" src="${imageBase ?? ''}/${k}.png"/>&nbsp;${this._unitInfo[k]}</x-stat>`;
+                           } break;
+                        }
                      }
 
                      this.g.stats.innerHTML = html;
                   }
 
                   _syncUI() {
+                     this.g.image.src = `${imageBase ?? ''}/${this.unit}.png`;
                      this.g.badge.innerText = this.count;
                      this.g.badge.classList.toggle("hidden", !this.count);
                      this.g.supplyIcon.style.display = !this._supply ? "none" : "block";

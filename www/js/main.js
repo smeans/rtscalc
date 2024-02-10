@@ -1,4 +1,5 @@
 let currentRace = null;
+let imageBase = null;
 
 function cloneTemplate(t) {
     const div = document.createElement('div');
@@ -9,6 +10,10 @@ function cloneTemplate(t) {
 
 function getUnitImgSrc(unit) {
     return `/images/${config.info.id}/${unit}.png`;
+}
+
+function getRaceImgBase() {
+    return `/images/${config.info.id}`;
 }
 
 function getFrameImageBase(name) {
@@ -28,11 +33,13 @@ function patchNames(d) {
 
 function syncRace() {
     currentRace = config.races[currentRacePicker.value];
+    imageBase = getRaceImgBase();
+
     patchNames(currentRace.units);
     patchNames(currentRace.upgrades);
     patchNames(currentRace.buildings);
 
-    workerImage.src = getUnitImgSrc(currentRace.workers.name)
+    workerImage.unit = currentRace.workers.name;
 
     workersFrame.base = getFrameImageBase('worker');
     pbFrame.base = getFrameImageBase('pb');
@@ -46,7 +53,8 @@ function syncRace() {
     if (dss) {
         ssPerMinuteTile.unit = dss.name;
         ssPerMinuteTile.unitInfo = dss;
-        ssPerMinuteTile.src = getUnitImgSrc(dss.name);    
+        ssPerMinuteTile.unit = dss.name;
+        ssPerMinuteTile.imageBase = getRaceImgBase();  
         ssPerMinuteTile.count = 0;
         
         ssPerMinuteTile.style.display = 'inline';
@@ -86,7 +94,7 @@ function syncRace() {
     for (let name in currentRace.units) {
         const el = cloneTemplate(unitTemplate);
 
-        el.src = getUnitImgSrc(name);
+        el.unit = name;
         el.unitInfo = currentRace.units[name];
 
         el.id = `unit${name}`;
@@ -97,7 +105,6 @@ function syncRace() {
             keymap[currentRace.units[name].hotkey] = name;
         }
 
-        el.unit = name;
     }
 }
 
@@ -153,7 +160,6 @@ function addUnit(el) {
         ube.unit = el.unit;
         ube.unitInfo = el.unitInfo;
         ube.classList.add(el.id);
-        ube.src = el.src;
 
         unitsBuilding.appendChild(ube);
     }
@@ -221,7 +227,6 @@ function recalcProdBuildings() {
         pbe.title = un;
         pbe.unit = un;
         pbe.unitInfo = currentRace.buildings[un];
-        pbe.src = getUnitImgSrc(un);
         pbe.count = rpb[un];
 
         productionBuildings.appendChild(pbe);
