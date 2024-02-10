@@ -1,11 +1,10 @@
 - ~~switch to blue frames when vanguard selected~~
 - remove badges and supply structures - (cafiend: do we think this is done?)
 - ~~go back to constant unit production model~~
-- combine uppm and pb windows
-- move inputs below, outputs above
+- ~~combine uppm and pb windows~~
+- ~~move inputs below, outputs above~~
 - ~~move supply per minute from mining to output window (cafiend: moved to CUP window)~~
 - have a check box that includes/excludes unit supply cost
-- remove badges and supply structures
 - ~~go back to constant unit production model for calculation~~
 - ~~Unit stats tooltips~~
 - Readme

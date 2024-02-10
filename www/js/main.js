@@ -42,7 +42,6 @@ function syncRace() {
     workerImage.unit = currentRace.workers.name;
 
     workersFrame.base = getFrameImageBase(`${currentRace.name}_worker`);
-    pbFrame.base = getFrameImageBase(`${currentRace.name}_pb`);
     cupFrame.base = getFrameImageBase(`${currentRace.name}_uppm`);
     unitFrame.base = getFrameImageBase(`${currentRace.name}_unit`);
 
@@ -236,12 +235,21 @@ function recalcProdBuildings() {
 
         productionBuildings.appendChild(pbe);
     }
-
-    console.log(rpb);
 }
 
 function recalcStats() {
     const rr = getTotalRequiredRPM();
+
+    const ss = currentRace.buildings[ssPerMinuteTile.unit];
+
+    ssPerMinuteTile.count = Math.ceil(Math.max(0, rr.netSupply) / ((60.0/ss.time)*Math.abs(ss.supply)));
+    supplyPerMinute.innerText = rr.supply || '0';
+    netSupplyPerMinute.innerText = rr.netSupply || '0';
+
+    if (includeSupplyCost.checked) {
+        const sr = getRequiredRPM(ssPerMinuteTile);
+        addObjects(rr, sr);
+    }
 
     if (autoBalanceWorkers.checked) {
         remaxWorkers(rr);
@@ -254,12 +262,6 @@ function recalcStats() {
 
         db.value = rpm - rr[rn];
     });
-
-    const ss = currentRace.buildings[ssPerMinuteTile.unit];
-
-    ssPerMinuteTile.count = Math.ceil(Math.max(0, rr.netSupply) / ((60.0/ss.time)*Math.abs(ss.supply)));
-    supplyPerMinute.innerText = rr.supply || '0';
-    netSupplyPerMinute.innerText = rr.netSupply || '0';
 
     recalcProdBuildings(rr);
 }
@@ -321,6 +323,10 @@ document.addEventListener('ph-loaded', () => {
     });
 
     autoBalanceWorkers.addEventListener('input', (e) => {
+        recalcStats();
+    });
+
+    includeSupplyCost.addEventListener('input', (e) => {
         recalcStats();
     });
 });

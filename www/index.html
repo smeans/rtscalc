@@ -449,40 +449,12 @@
          >&nbsp;<button type="button" id="resetButton">Reset</button>
       </p>
 
-      <x-hbox id="requiredResPro" class="wrap">
-         <x-ui-frame id="workersFrame">
-            <fieldset id="workers">
-               <x-hbox>
-                  <h2>Mining</h2>
-                  <x-spacer></x-spacer
-                  ><label
-                     ><input type="checkbox" id="autoBalanceWorkers" />&nbsp;auto-balance
-                     workers</label
-                  ></x-hbox
-               >
-               <x-hbox>
-                  <img id="workerImage" />
-                  <x-vbox id="activeWorkers"></x-vbox>
-               </x-hbox>
-            </fieldset>
-         </x-ui-frame>
-
-         <x-ui-frame id="pbFrame">
+      <x-hbox class="flex">
+         <x-ui-frame id="cupFrame">
             <fieldset>
                <h2>Required Production Buildings</h2>
                <x-units id="productionBuildings"></x-units>
             </fieldset>
-         </x-ui-frame>
-      </x-hbox>
-
-      <x-hbox class="flex">
-         <x-ui-frame id="unitFrame">
-            <fieldset>
-               <h2>Units</h2>
-               <x-units id="units"></x-units>
-            </fieldset>
-         </x-ui-frame>
-         <x-ui-frame id="cupFrame">
             <fieldset>
                <h2>Continuous Unit Production</h2>
                <x-hbox>
@@ -494,6 +466,32 @@
             </fieldset>
          </x-ui-frame>
       </x-hbox>
+      
+      <x-hbox id="requiredResPro" class="wrap">
+         <x-ui-frame id="unitFrame">
+            <fieldset>
+               <h2>Units</h2>
+               <x-units id="units"></x-units>
+            </fieldset>
+         </x-ui-frame>
+         <x-ui-frame id="workersFrame">
+            <fieldset id="workers">
+               <x-hbox class="top">
+                  <h2>Mining</h2>
+                  <x-spacer></x-spacer>
+                  <x-vbox>
+                     <label><input type="checkbox" id="autoBalanceWorkers" />&nbsp;auto-balance workers</label>
+                     <label><input type="checkbox" id="includeSupplyCost" checked />&nbsp;include supply cost</label>
+                  </x-vbox>
+               </x-hbox>
+               <x-hbox>
+                  <img id="workerImage" />
+                  <x-vbox id="activeWorkers"></x-vbox>
+               </x-hbox>
+            </fieldset>
+         </x-ui-frame>
+      </x-hbox>
+
       <template id="activeWorkerTemplate">
          <x-hbox class="worker">
             <x-vbox>
