@@ -74,6 +74,8 @@
 
                :host(:hover) x-stats {
                   visibility: visible;
+                  opacity: 1;
+                  transition: opacity .2s ease-in 1s;
                }
 
                .hidden {
@@ -139,11 +141,12 @@
                   display: flex;
                   flex-direction: column;
                   visibility: hidden;
+                  opacity: 0;
                   position: absolute;
                   background-color: #000;
                   padding: .25rem;
-                  left: 50%;
-                  top: 50%;
+                  left: 100%;
+                  top: 0%;
                   z-index: 1000;
                }
 
@@ -152,7 +155,7 @@
                }
 
                x-stat {
-                  display: block;
+                  display: flex;
                }
             </style>
             <x-frame>
@@ -461,11 +464,6 @@
                   <img id="workerImage" />
                   <x-vbox id="activeWorkers"></x-vbox>
                </x-hbox>
-               <x-hbox>
-                  <x-unit-tile id="ssPerMinuteTile"></x-unit-tile>
-                  <label>supply per minute</label>&nbsp;<span id="supplyPerMinute">0</span>
-                     &nbsp;(<span id="netSupplyPerMinute">0</span>&nbsp;net)
-               </x-hbox>
             </fieldset>
          </x-ui-frame>
 
@@ -487,6 +485,11 @@
          <x-ui-frame id="cupFrame">
             <fieldset>
                <h2>Continuous Unit Production</h2>
+               <x-hbox>
+                  <x-unit-tile id="ssPerMinuteTile"></x-unit-tile>
+                  <label>supply per minute</label>&nbsp;<span id="supplyPerMinute">0</span>
+                     &nbsp;(<span id="netSupplyPerMinute">0</span>&nbsp;net)
+               </x-hbox>
                <x-units id="unitsBuilding"></x-units>
             </fieldset>
          </x-ui-frame>
@@ -497,7 +500,7 @@
                <x-hbox>
                   <label></label>
                   <x-slinput></x-slinput>
-                  <x-hbox><span class="rpm">0</span>/min.</x-hbox>
+                  <x-hbox style="min-width: 5em;"><span class="rpm">0</span>/min.</x-hbox>
                </x-hbox>
                <x-delta-bar></x-delta-bar>
             </x-vbox>

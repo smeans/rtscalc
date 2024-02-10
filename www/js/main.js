@@ -41,10 +41,10 @@ function syncRace() {
 
     workerImage.unit = currentRace.workers.name;
 
-    workersFrame.base = getFrameImageBase('worker');
-    pbFrame.base = getFrameImageBase('pb');
-    cupFrame.base = getFrameImageBase('uppm');
-    unitFrame.base = getFrameImageBase('unit');
+    workersFrame.base = getFrameImageBase(`${currentRace.name}_worker`);
+    pbFrame.base = getFrameImageBase(`${currentRace.name}_pb`);
+    cupFrame.base = getFrameImageBase(`${currentRace.name}_uppm`);
+    unitFrame.base = getFrameImageBase(`${currentRace.name}_unit`);
 
     activeWorkers.innerText = '';
 
@@ -144,6 +144,12 @@ function getRequiredRPM(el) {
 function getTotalRequiredRPM() {
     const rr = {};
 
+    resources.forEach((rn) => {
+        rr[rn] = 0;
+    });
+    rr.supply =
+    rr.netSupply = 0;
+
     document.querySelectorAll('#unitsBuilding x-unit-tile').forEach((el) => {
         const urr = getRequiredRPM(el);
         addObjects(rr, urr);
@@ -224,7 +230,6 @@ function recalcProdBuildings() {
 
     for (let un in rpb) {
         const pbe = document.createElement('x-unit-tile');
-        pbe.title = un;
         pbe.unit = un;
         pbe.unitInfo = currentRace.buildings[un];
         pbe.count = rpb[un];
@@ -237,10 +242,6 @@ function recalcProdBuildings() {
 
 function recalcStats() {
     const rr = getTotalRequiredRPM();
-
-    if (!Object.keys(rr).length) {
-        return;
-    }
 
     if (autoBalanceWorkers.checked) {
         remaxWorkers(rr);
