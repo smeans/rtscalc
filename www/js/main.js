@@ -1,5 +1,6 @@
 let currentRace = null;
 let imageBase = null;
+let supplyCost = {};
 
 function cloneTemplate(t) {
     const div = document.createElement('div');
@@ -33,6 +34,8 @@ function patchNames(d) {
 
 function syncRace() {
     currentRace = config.races[currentRacePicker.value];
+    resources = Object.keys(currentRace.workers.rpm);
+
     imageBase = getRaceImgBase();
 
     patchNames(currentRace.units);
@@ -49,6 +52,8 @@ function syncRace() {
 
     const dss = Object.values(currentRace.buildings).filter((b) => b.defaultSupply).pop();
 
+    supplyCost = {};
+
     if (dss) {
         ssPerMinuteTile.unit = dss.name;
         ssPerMinuteTile.unitInfo = dss;
@@ -57,13 +62,20 @@ function syncRace() {
         ssPerMinuteTile.count = 0;
         
         ssPerMinuteTile.style.display = 'inline';
+
+        resources.forEach((rn) => {
+            if (rn in dss) {
+                supplyCost[rn] = dss[rn]/Math.abs(dss.supply);
+            }
+        });
+
+        console.log('supplyCost', supplyCost)
     } else {
         ssPerMinuteTile.style.display = 'none';
     }
 
     supplyPerMinute.innerText = '0';
 
-    resources = Object.keys(currentRace.workers.rpm);
     for (let r in currentRace.workers.rpm) {
         const el = cloneTemplate(activeWorkerTemplate);
 
@@ -121,6 +133,16 @@ function addObjects(a, b) {
     }
 
     return a;
+}
+
+function opObject(a, op) {
+    const o = {};
+
+    for (let k in a) {
+        o[k] = op(k, a[k]);
+    }
+
+    return o;
 }
 
 function getRequiredRPM(el) {
@@ -241,6 +263,7 @@ function recalcProdBuildings() {
 
 function recalcStats() {
     const rr = getTotalRequiredRPM();
+    console.log('total required RPM', rr);
 
     const ss = currentRace.buildings[ssPerMinuteTile.unit];
 
@@ -248,8 +271,10 @@ function recalcStats() {
     ssPerMinuteTile.style.display = includeSupplyCost.checked && ssPerMinuteTile.count ? 'inline' : 'none';
 
     if (includeSupplyCost.checked) {
-        const sr = getRequiredRPM(ssPerMinuteTile);
-        addObjects(rr, sr);
+        const sc = opObject(supplyCost, (k, v) => Math.ceil(supplyCost[k] * rr.supply));
+        console.log('supply costs', sc);
+
+        addObjects(rr, sc);
     }
 
     supplyPerMinute.innerText = rr.supply || '0';

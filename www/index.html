@@ -74,6 +74,7 @@
 
                :host(:hover) x-stats {
                   visibility: visible;
+                  pointer-events:all;
                   opacity: 1;
                   transition: opacity .2s ease-in 1s;
                }
@@ -139,6 +140,7 @@
 
                x-stats {
                   display: flex;
+                  pointer-events: none;
                   flex-direction: column;
                   visibility: hidden;
                   opacity: 0;
@@ -235,13 +237,17 @@
                            } break;
 
                            case 'supply': {
-                              html += `<x-stat><img title="${k}" src="${imageBase ?? ''}/${currentRace.name}_${k}.png"/>&nbsp;${this._unitInfo[k]}</x-stat>`;
+                              html += `<x-stat><img title="${k}" src="${imageBase ?? ''}/${currentRace.name}_${k}.png"/>&nbsp;${this._unitInfo[k] * (this.count || 1)}</x-stat>`;
+                           } break;
+
+                           case 'time': {
+                              html += `<x-stat><img title="${k}" src="${imageBase ?? ''}/${k}.png"/>&nbsp;${this._unitInfo[k]}</x-stat>`;
                            } break;
 
                            case 'defaultSupply': break;
 
                            default: {
-                              html += `<x-stat><img title="${k}" src="${imageBase ?? ''}/${k}.png"/>&nbsp;${this._unitInfo[k]}</x-stat>`;
+                              html += `<x-stat><img title="${k}" src="${imageBase ?? ''}/${k}.png"/>&nbsp;${this._unitInfo[k] * (this.count || 1)}</x-stat>`;
                            } break;
                         }
                      }
@@ -460,7 +466,7 @@
                <x-hbox>
                   <label>supply per minute</label>&nbsp;<span id="supplyPerMinute">0</span>
                      &nbsp;(<span id="netSupplyPerMinute">0</span>&nbsp;net)
-                     <x-unit-tile id="ssPerMinuteTile"></x-unit-tile>
+                     <x-unit-tile id="ssPerMinuteTile" style="display: none"></x-unit-tile>
                </x-hbox>
                <x-units id="unitsBuilding"></x-units>
             </fieldset>
