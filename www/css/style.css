@@ -168,3 +168,11 @@ label {
    box-shadow: #a10000 0 0 10px;
    transform: translateY(4px);
 }
+
+.info {
+   font-weight: lighter;
+   color: cyan;
+   font-size: 110%;
+   padding-left: .5rem;
+   text-decoration: none;
+}

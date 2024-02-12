@@ -452,7 +452,7 @@
       <x-hbox class="flex">
          <x-ui-frame id="cupFrame">
             <fieldset>
-               <h2>Required Production Buildings</h2>
+               <h2>Required Production Buildings<a class="info" href="javascript:rpbInfo.showModal()">🛈</a></h2>
                <x-units id="productionBuildings"></x-units>
             </fieldset>
             <fieldset>
@@ -491,6 +491,17 @@
             </fieldset>
          </x-ui-frame>
       </x-hbox>
+
+      <dialog id="rpbInfo">
+         <x-hbox>
+            <h2>Required Production Buildings</h2>
+            <x-spacer></x-spacer>
+            <a onclick="this.closest('dialog').close()">🗙</a>
+         </x-hbox>
+         <p>This shows you what buildings you need to have to maintain the chosen
+            level of unit production.
+         </p>
+      </dialog>
 
       <template id="activeWorkerTemplate">
          <x-hbox class="worker">
