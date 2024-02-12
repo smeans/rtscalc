@@ -70,9 +70,10 @@ function syncRace() {
         });
 
         console.log('supplyCost', supplyCost)
-    } else {
-        ssPerMinuteTile.style.display = 'none';
     }
+
+    // !!!TBD!!! hiding this until we finalize supply interface
+    ssPerMinuteTile.style.display = 'none';
 
     supplyPerMinute.innerText = '0';
 
@@ -268,7 +269,8 @@ function recalcStats() {
     const ss = currentRace.buildings[ssPerMinuteTile.unit];
 
     ssPerMinuteTile.count = Math.ceil(Math.max(0, rr.netSupply) / ((60.0/ss.time)*Math.abs(ss.supply)));
-    ssPerMinuteTile.style.display = includeSupplyCost.checked && ssPerMinuteTile.count ? 'inline' : 'none';
+    // !!!TBD!!! wsm - remove this permanently after we finalize supply interface
+    // ssPerMinuteTile.style.display =  includeSupplyCost.checked && ssPerMinuteTile.count ? 'inline' : 'none';
 
     if (includeSupplyCost.checked) {
         const sc = opObject(supplyCost, (k, v) => Math.ceil(supplyCost[k] * rr.supply));
