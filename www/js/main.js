@@ -245,13 +245,15 @@ function recalcStats() {
     const ss = currentRace.buildings[ssPerMinuteTile.unit];
 
     ssPerMinuteTile.count = Math.ceil(Math.max(0, rr.netSupply) / ((60.0/ss.time)*Math.abs(ss.supply)));
-    supplyPerMinute.innerText = rr.supply || '0';
-    netSupplyPerMinute.innerText = rr.netSupply || '0';
+    ssPerMinuteTile.style.display = includeSupplyCost.checked && ssPerMinuteTile.count ? 'inline' : 'none';
 
     if (includeSupplyCost.checked) {
         const sr = getRequiredRPM(ssPerMinuteTile);
         addObjects(rr, sr);
     }
+
+    supplyPerMinute.innerText = rr.supply || '0';
+    netSupplyPerMinute.innerText = rr.netSupply || '0';
 
     if (autoBalanceWorkers.checked) {
         remaxWorkers(rr);
