@@ -64,7 +64,8 @@ label {
    padding: 10px;
 }
 
-#requiredResPro {
+#requiredResPro,
+#requiredProBuildings {
    /* border: 2px solid #036062;
    border-radius: 5px;
    box-shadow: #e7eff6 0 0 10px; */
