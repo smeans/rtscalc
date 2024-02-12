@@ -74,6 +74,7 @@
 
                :host(:hover) x-stats {
                   visibility: visible;
+                  pointer-events:all;
                   opacity: 1;
                   transition: opacity 0.2s ease-in 0.3s;
                }
@@ -139,6 +140,7 @@
 
                x-stats {
                   display: flex;
+                  pointer-events: none;
                   flex-direction: column;
                   visibility: hidden;
                   opacity: 0;
@@ -238,6 +240,7 @@
                               }
                               break;
 
+<<<<<<< HEAD
                            case "supply":
                               {
                                  html += `<x-stat><img title="${k}" src="${imageBase ?? ""}/${
@@ -245,10 +248,20 @@
                                  }_${k}.png"/>&nbsp;${this._unitInfo[k]}</x-stat>`;
                               }
                               break;
+=======
+                           case 'supply': {
+                              html += `<x-stat><img title="${k}" src="${imageBase ?? ''}/${currentRace.name}_${k}.png"/>&nbsp;${this._unitInfo[k] * (this.count || 1)}</x-stat>`;
+                           } break;
+
+                           case 'time': {
+                              html += `<x-stat><img title="${k}" src="${imageBase ?? ''}/${k}.png"/>&nbsp;${this._unitInfo[k]}</x-stat>`;
+                           } break;
+>>>>>>> 53d33075e61e384c6aee61ae572e6a467b848101
 
                            case "defaultSupply":
                               break;
 
+<<<<<<< HEAD
                            default:
                               {
                                  html += `<x-stat><img title="${k}" src="${
@@ -256,6 +269,11 @@
                                  }/${k}.png"/>&nbsp;${this._unitInfo[k]}</x-stat>`;
                               }
                               break;
+=======
+                           default: {
+                              html += `<x-stat><img title="${k}" src="${imageBase ?? ''}/${k}.png"/>&nbsp;${this._unitInfo[k] * (this.count || 1)}</x-stat>`;
+                           } break;
+>>>>>>> 53d33075e61e384c6aee61ae572e6a467b848101
                         }
                      }
 
@@ -465,15 +483,19 @@
       <x-hbox id="requiredProBuildings" class="flex">
          <x-ui-frame id="cupFrame">
             <fieldset>
-               <h2>Required Production Buildings</h2>
+               <h2>Required Production Buildings<a class="info" href="javascript:rpbInfo.showModal()">🛈</a></h2>
                <x-units id="productionBuildings"></x-units>
             </fieldset>
             <fieldset>
                <h2>Continuous Unit Production</h2>
                <x-hbox>
-                  <x-unit-tile id="ssPerMinuteTile"></x-unit-tile>
                   <label>supply per minute</label>&nbsp;<span id="supplyPerMinute">0</span>
+<<<<<<< HEAD
                   &nbsp;(<span id="netSupplyPerMinute">0</span>&nbsp;net)
+=======
+                     &nbsp;(<span id="netSupplyPerMinute">0</span>&nbsp;net)
+                     <x-unit-tile id="ssPerMinuteTile" style="display: none"></x-unit-tile>
+>>>>>>> 53d33075e61e384c6aee61ae572e6a467b848101
                </x-hbox>
                <x-units id="unitsBuilding"></x-units>
             </fieldset>
@@ -510,6 +532,17 @@
             </fieldset>
          </x-ui-frame>
       </x-hbox>
+
+      <dialog id="rpbInfo">
+         <x-hbox>
+            <h2>Required Production Buildings</h2>
+            <x-spacer></x-spacer>
+            <a onclick="this.closest('dialog').close()">🗙</a>
+         </x-hbox>
+         <p>This shows you what buildings you need to have to maintain the chosen
+            level of unit production.
+         </p>
+      </dialog>
 
       <template id="activeWorkerTemplate">
          <x-hbox class="worker">
