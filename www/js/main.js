@@ -105,6 +105,8 @@ function syncRace() {
         }
 
     }
+
+    recalcStats();
 }
 
 function addObjects(a, b) {
