@@ -71,10 +71,7 @@ function syncRace() {
 
         console.log('supplyCost', supplyCost)
     }
-
-    // !!!TBD!!! hiding this until we finalize supply interface
-    ssPerMinuteTile.style.display = 'none';
-
+    
     supplyPerMinute.innerText = '0';
 
     for (let r in currentRace.workers.rpm) {
@@ -268,7 +265,7 @@ function recalcStats() {
 
     const ss = currentRace.buildings[ssPerMinuteTile.unit];
 
-    ssPerMinuteTile.count = Math.ceil(Math.max(0, rr.netSupply) / ((60.0/ss.time)*Math.abs(ss.supply)));
+    ssPerMinuteTile.count = Math.round(Math.max(0, rr.netSupply) / ((60.0/ss.time)*Math.abs(ss.supply))*10.0)/10.0;
     // !!!TBD!!! wsm - remove this permanently after we finalize supply interface
     // ssPerMinuteTile.style.display =  includeSupplyCost.checked && ssPerMinuteTile.count ? 'inline' : 'none';
 
@@ -280,7 +277,6 @@ function recalcStats() {
     }
 
     supplyPerMinute.innerText = rr.supply || '0';
-    netSupplyPerMinute.innerText = rr.netSupply || '0';
 
     if (autoBalanceWorkers.checked) {
         remaxWorkers(rr);

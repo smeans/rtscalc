@@ -77,18 +77,6 @@ const config = {
           "therium": 75,
           "supply": 3,
           "time": 35.5
-        },
-        "shrine": {
-          "luminite": 350,
-          "therium": 0,
-          "supply": -15,
-          "time": 80
-        },
-        "meat_farm": {
-          "luminite": 50,
-          "therium": 0,
-          "supply": -15,
-          "time": 20
         }
       },
       "upgrades": {
@@ -257,21 +245,6 @@ const config = {
           "therium": 125,
           "supply": 4,
           "time": 50
-        },
-        "commandpost": {
-          "luminite": 400,
-          "therium": 0,
-          "supply": -15,
-          "time": 90,
-          "produces": [
-            "bob"
-          ]
-        },
-        "habitat": {
-          "luminite": 100,
-          "therium": 0,
-          "supply": -15,
-          "time": 20
         }
       },
       "upgrades": {
