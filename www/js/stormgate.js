@@ -200,7 +200,7 @@ const config = {
           "time": 15
         },
         "exo": {
-          "luminite": 100,
+          "luminite": 125,
           "therium": 25,
           "supply": 2,
           "time": 28
