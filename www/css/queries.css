@@ -1,0 +1,7 @@
+/* Mobile Optimization */
+
+@media screen and (max-width: 768px) {
+   #workersFrame {
+      max-width: 95vw;
+   }
+}
