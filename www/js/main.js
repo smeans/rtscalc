@@ -301,6 +301,7 @@ document.addEventListener('ph-loaded', () => {
     document.title = config.info.title;
     mainTitle.innerText = config.info.title;
     mainDescription.innerText = config.info.description;
+    patchInfo.innerHTML = config.info.patchInfo;
 
     for (let race in config.races) {
         const opt = document.createElement('option');

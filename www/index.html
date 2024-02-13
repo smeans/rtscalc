@@ -486,9 +486,7 @@
          <x-ui-frame id="cupFrame">
             <fieldset>
                <h2>
-                  Required Production Buildings<a class="info" href="javascript:rpbInfo.showModal()"
-                     >🛈</a
-                  >
+                  Required Production Buildings<a class="info" href="javascript:rpbInfo.showModal()">🛈</a>
                </h2>
                <x-units id="productionBuildings"></x-units>
             </fieldset>
@@ -546,6 +544,29 @@
             production.
          </p>
       </dialog>
+
+      <dialog id="about">
+         <x-hbox>
+            <h2>About</h2>
+            <x-spacer></x-spacer>
+            <a onclick="this.closest('dialog').close()">🗙</a>
+         </x-hbox>
+         <p>
+            This is an open-source real-time strategy game build calculator engine, [rtscalc](https://github.com/smeans/rtscalc). The primary contributors are:
+
+            * [Scott "Cafiend" Means](https://github.com/smeans)
+            * [RustyShacky](https://github.com/RustyShacky)
+            * [navenitram](https://github.com/EMDoge)
+         </p>
+      </dialog>
+
+      <footer id="footer">
+         <x-hbox>
+            <a class="info" href="javascript:about.showModal()">about</a>
+            <x-spacer></x-spacer>
+            <x-patch id="patchInfo"></x-patch>
+         </x-hbox>
+      </footer>
 
       <template id="activeWorkerTemplate">
          <x-hbox class="worker">
