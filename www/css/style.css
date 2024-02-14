@@ -171,6 +171,11 @@ label {
    transform: translateY(4px);
 }
 
+#svg {
+    width: 1em;
+    height: 1em;
+}
+
 .info {
    font-weight: lighter;
    color: cyan;
