@@ -20,7 +20,7 @@ const config = {
         "name": "imp",
         "rpm": {
           "luminite": 50,
-          "therium": 50
+          "therium": 35
         },
         "maxActive": 100
       },
