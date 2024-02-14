@@ -20,7 +20,7 @@ const config = {
         "name": "imp",
         "rpm": {
           "luminite": 50,
-          "therium": 50
+          "therium": 35
         },
         "maxActive": 100
       },
@@ -50,9 +50,9 @@ const config = {
           "time": 35.5
         },
         "hellborne": {
-          "luminite": 150,
-          "therium": 150,
-          "supply": 5,
+          "luminite": 250,
+          "therium": 225,
+          "supply": 8,
           "time": 35.5
         },
         "doombringer": {
@@ -176,7 +176,7 @@ const config = {
         "name": "bob",
         "rpm": {
           "luminite": 50,
-          "therium": 50
+          "therium": 35
         },
         "maxActive": 100
       },
@@ -200,7 +200,7 @@ const config = {
           "time": 15
         },
         "exo": {
-          "luminite": 100,
+          "luminite": 125,
           "therium": 25,
           "supply": 2,
           "time": 28
@@ -256,10 +256,10 @@ const config = {
           "time": 60
         },
         "vorilliumclaws": {
-          "luminite": 25,
-          "therium": 25,
+          "luminite": 50,
+          "therium": 50,
           "supply": 0,
-          "time": 30
+          "time": 60
         },
         "quickdrawhustle": {
           "luminite": 100,
