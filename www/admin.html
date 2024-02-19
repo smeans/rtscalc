@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <title>RTS Calculator</title>
+      <link rel="stylesheet" href="/css/expressive.css" />
+      <link rel="stylesheet" href="/css/style.css" />
+      <link rel="stylesheet" href="/css/queries.css" />
+
+      <style>
+        iframe {
+            display: none;
+        }
+      </style>
+   </head>
+   <body>
+        <form name="extractUnitData">
+            <x-hbox>
+                <textarea id="unitPageSource" name="unitePageSource" rows="5" cols="50" autofocus></textarea>
+                <button id="parseUPS" type="button">parse</button>
+            </x-hbox>
+            <pre style="user-select: all" id="unitDataJSON"></pre>
+        </form>
+        <script src="/js/admin.js"></script>
+        <script src="/js/ph.js"></script>
+        <script src="/js/css.js"></script>
+   </body>
+</html>
