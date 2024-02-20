@@ -147,7 +147,7 @@ function getRequiredRPM(el) {
     const ui = currentRace.units[el.unit];
 
     const rpm = {};
-    const upm = el.count * (60/ui.time);
+    const upm = el.count * (60/ui.buildtime);
 
     resources.forEach((rn) => {
         if (rn in ui) {
@@ -265,7 +265,7 @@ function recalcStats() {
 
     const ss = currentRace.buildings[ssPerMinuteTile.unit];
 
-    ssPerMinuteTile.count = Math.round(Math.max(0, rr.netSupply) / ((60.0/ss.time)*Math.abs(ss.supply))*10.0)/10.0;
+    ssPerMinuteTile.count = Math.round(Math.max(0, rr.netSupply) / ((60.0/ss.buildtime)*Math.abs(ss.supply))*10.0)/10.0;
     // !!!TBD!!! wsm - remove this permanently after we finalize supply interface
     // ssPerMinuteTile.style.display =  includeSupplyCost.checked && ssPerMinuteTile.count ? 'inline' : 'none';
 
