@@ -393,8 +393,8 @@ const config = {
         }        
       }
     },
-    "celestial": {
-      "name": "celestial",
+    "celestials": {
+      "name": "celestials",
       "workers": {
         "name": "prism",
         "rpm": {
@@ -436,18 +436,18 @@ const config = {
           "luminite": 250,
           "therium": 0,
           "supply": 0,
-          "time": 60,
-          ]
+          "time": 60
         },
         "creation_chamber": {
           "luminite": 150,
           "therium": 0,
           "supply": 0,
           "time": 40, 
-		  "produces": [
-            "argent"
+          "produces": [
+                "argent"
+          ]
         }
       }
     }
   }
-};
+}
