@@ -197,13 +197,19 @@ const config = {
           "luminite": 50,
           "therium": 0,
           "supply": 1,
-          "time": 15
+          "time": 18
         },
         "exo": {
           "luminite": 125,
           "therium": 25,
           "supply": 2,
           "time": 28
+        },
+        "graven: {
+          "luminite": 125,
+          "therium": 75,
+          "supply": 4,
+          "time": 38
         },
         "medtech": {
           "luminite": 100,
@@ -246,6 +252,12 @@ const config = {
           "therium": 125,
           "supply": 4,
           "time": 50
+        },
+        "helicarrier": {
+          "luminite": 300,
+          "therium": 250,
+          "supply": 8,
+          "time": 55
         }
       },
       "upgrades": {
@@ -377,7 +389,7 @@ const config = {
           "luminite": 100,
           "therium": 0,
           "supply": 0,
-          "time": 55
+          "time": 45
         }
       }
     }
