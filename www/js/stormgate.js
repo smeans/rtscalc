@@ -205,7 +205,7 @@ const config = {
           "supply": 2,
           "time": 28
         },
-        "graven: {
+        "graven": {
           "luminite": 125,
           "therium": 75,
           "supply": 4,
