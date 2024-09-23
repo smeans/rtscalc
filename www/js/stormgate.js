@@ -14,162 +14,6 @@ const config = {
     }
   },
   "races": {
-    "infernals": {
-      "name": "infernals",
-      "workers": {
-        "name": "imp",
-        "rpm": {
-          "luminite": 50,
-          "therium": 35
-        },
-        "maxActive": 100
-      },
-      "units": {
-        "imp": {
-          "luminite": 50,
-          "therium": 0,
-          "supply": 1,
-          "time": 17.5
-        },
-        "brute": {
-          "luminite": 150,
-          "therium": 0,
-          "supply": 3,
-          "time": 35.5
-        },
-        "gaunt": {
-          "luminite": 50,
-          "therium": 15,
-          "supply": 1,
-          "time": 35.5
-        },
-        "magmadon": {
-          "luminite": 250,
-          "therium": 150,
-          "supply": 6,
-          "time": 35.5
-        },
-        "hellborne": {
-          "luminite": 250,
-          "therium": 225,
-          "supply": 8,
-          "time": 35.5
-        },
-        "doombringer": {
-          "luminite": 100,
-          "therium": 150,
-          "supply": 4,
-          "time": 35.5
-        },
-        "weaver": {
-          "luminite": 100,
-          "therium": 150,
-          "supply": 4,
-          "time": 35.5
-        },
-        "shadowflyer": {
-          "luminite": 25,
-          "therium": 50,
-          "supply": 1,
-          "time": 35.5
-        },
-        "spriggan": {
-          "luminite": 75,
-          "therium": 75,
-          "supply": 3,
-          "time": 35.5
-        }
-      },
-      "upgrades": {
-        "flame_on": {
-          "luminite": 100,
-          "therium": 100,
-          "supply": 0,
-          "time": 60
-        },
-        "sanguine_surge": {
-          "luminite": 100,
-          "therium": 100,
-          "supply": 0,
-          "time": 60
-        },
-        "reapers_rush": {
-          "luminite": 100,
-          "therium": 100,
-          "supply": 0,
-          "time": 60
-        },
-        "soulforge_ascendance": {
-          "luminite": 100,
-          "therium": 100,
-          "supply": 0,
-          "time": 60
-        },
-        "demonhoof_tremors": {
-          "luminite": 100,
-          "therium": 100,
-          "supply": 0,
-          "time": 60
-        } 
-      },
-      "buildings": {
-        "shrine": {
-          "luminite": 350,
-          "therium": 0,
-          "supply": -15,
-          "time": 80,
-          "produces": ["imp"]
-        },
-        "meat_farm": {
-          "luminite": 50,
-          "therium": 0,
-          "supply": -15,
-          "time": 20,
-          "defaultSupply": true
-        },
-        "iron_vault": {
-          "luminite": 100,
-          "therium": 10,
-          "supply": 0,
-          "time": 60,
-          "produces": ["brute", "magmadon", "hellborne"]
-        },
-        "conclave": {
-          "luminite": 100,
-          "therium": 0,
-          "supply": 0,
-          "time": 60,
-          "produces": ["gaunt", "doombringer", "weaver"]
-        },
-        "twilight_spire": {
-          "luminite": 100,
-          "therium": 50,
-          "supply": 0,
-          "time": 60,
-          "produces": ["shadowflyer", "spriggan"]
-        },
-        "shadowcleft": {
-          "luminite": 150,
-          "therium": 100,
-          "supply": 0,
-          "time": 70,
-          "upgrades": ["soulforge_ascendance", "demonhoof_tremors"]
-        },
-        "ritual_chamber": {
-          "luminite": 100,
-          "therium": 150,
-          "supply": 0,
-          "time": 60,
-          "upgrades": ["flame_on", "sanguine_surge", "reapers_rush"]
-        },
-        "shroudstone": {
-          "luminite": 25,
-          "therium": 100,
-          "supply": 0,
-          "time": 40
-        }        
-      }
-    },
     "vanguard": {
       "name": "vanguard",
       "workers": {
@@ -391,6 +235,162 @@ const config = {
           "supply": 0,
           "time": 45
         }
+      }
+    },
+    "infernals": {
+      "name": "infernals",
+      "workers": {
+        "name": "imp",
+        "rpm": {
+          "luminite": 50,
+          "therium": 35
+        },
+        "maxActive": 100
+      },
+      "units": {
+        "imp": {
+          "luminite": 50,
+          "therium": 0,
+          "supply": 1,
+          "time": 17.5
+        },
+        "brute": {
+          "luminite": 150,
+          "therium": 0,
+          "supply": 3,
+          "time": 35.5
+        },
+        "gaunt": {
+          "luminite": 50,
+          "therium": 15,
+          "supply": 1,
+          "time": 35.5
+        },
+        "magmadon": {
+          "luminite": 250,
+          "therium": 150,
+          "supply": 6,
+          "time": 35.5
+        },
+        "hellborne": {
+          "luminite": 250,
+          "therium": 225,
+          "supply": 8,
+          "time": 35.5
+        },
+        "doombringer": {
+          "luminite": 100,
+          "therium": 150,
+          "supply": 4,
+          "time": 35.5
+        },
+        "weaver": {
+          "luminite": 100,
+          "therium": 150,
+          "supply": 4,
+          "time": 35.5
+        },
+        "shadowflyer": {
+          "luminite": 25,
+          "therium": 50,
+          "supply": 1,
+          "time": 35.5
+        },
+        "spriggan": {
+          "luminite": 75,
+          "therium": 75,
+          "supply": 3,
+          "time": 35.5
+        }
+      },
+      "upgrades": {
+        "flame_on": {
+          "luminite": 100,
+          "therium": 100,
+          "supply": 0,
+          "time": 60
+        },
+        "sanguine_surge": {
+          "luminite": 100,
+          "therium": 100,
+          "supply": 0,
+          "time": 60
+        },
+        "reapers_rush": {
+          "luminite": 100,
+          "therium": 100,
+          "supply": 0,
+          "time": 60
+        },
+        "soulforge_ascendance": {
+          "luminite": 100,
+          "therium": 100,
+          "supply": 0,
+          "time": 60
+        },
+        "demonhoof_tremors": {
+          "luminite": 100,
+          "therium": 100,
+          "supply": 0,
+          "time": 60
+        } 
+      },
+      "buildings": {
+        "shrine": {
+          "luminite": 350,
+          "therium": 0,
+          "supply": -15,
+          "time": 80,
+          "produces": ["imp"]
+        },
+        "meat_farm": {
+          "luminite": 50,
+          "therium": 0,
+          "supply": -15,
+          "time": 20,
+          "defaultSupply": true
+        },
+        "iron_vault": {
+          "luminite": 100,
+          "therium": 10,
+          "supply": 0,
+          "time": 60,
+          "produces": ["brute", "magmadon", "hellborne"]
+        },
+        "conclave": {
+          "luminite": 100,
+          "therium": 0,
+          "supply": 0,
+          "time": 60,
+          "produces": ["gaunt", "doombringer", "weaver"]
+        },
+        "twilight_spire": {
+          "luminite": 100,
+          "therium": 50,
+          "supply": 0,
+          "time": 60,
+          "produces": ["shadowflyer", "spriggan"]
+        },
+        "shadowcleft": {
+          "luminite": 150,
+          "therium": 100,
+          "supply": 0,
+          "time": 70,
+          "upgrades": ["soulforge_ascendance", "demonhoof_tremors"]
+        },
+        "ritual_chamber": {
+          "luminite": 100,
+          "therium": 150,
+          "supply": 0,
+          "time": 60,
+          "upgrades": ["flame_on", "sanguine_surge", "reapers_rush"]
+        },
+        "shroudstone": {
+          "luminite": 25,
+          "therium": 100,
+          "supply": 0,
+          "time": 40
+        }        
       }
     }
   }
