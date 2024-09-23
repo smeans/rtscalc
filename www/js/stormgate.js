@@ -225,7 +225,7 @@ const config = {
         },
         "machinelab": {
           "luminite": 150,
-          "therium": 100,
+          "therium": 50,
           "supply": 0,
           "time": 50
         },
@@ -297,8 +297,8 @@ const config = {
           "time": 35.5
         },
         "spriggan": {
-          "luminite": 75,
-          "therium": 75,
+          "luminite": 100,
+          "therium": 50,
           "supply": 3,
           "time": 35.5
         }
@@ -391,6 +391,62 @@ const config = {
           "supply": 0,
           "time": 40
         }        
+      }
+    },
+    "celestial": {
+      "name": "celestial",
+      "workers": {
+        "name": "prism",
+        "rpm": {
+          "luminite": 75,
+          "therium": 150
+        },
+        "maxActive": 100
+      },
+      "units": {
+        "argent": {
+          "luminite": 100,
+          "therium": 0,
+          "supply": 2,
+          "time": 26
+        },
+        "kri": {
+          "luminite": 100,
+          "therium": 25,
+          "supply": 2,
+          "time": 28
+        }
+      },
+      "upgrades": {
+        "photocapaciters": {
+          "luminite": 100,
+          "therium": 100,
+          "supply": 0,
+          "time": 60
+        },
+        "longshotmodule": {
+          "luminite": 100,
+          "therium": 100,
+          "supply": 0,
+          "time": 60
+        }
+      },
+      "buildings": {
+        "arcship": {
+          "luminite": 250,
+          "therium": 0,
+          "supply": 0,
+          "time": 60,
+          ]
+        },
+        "creation_chamber": {
+          "luminite": 150,
+          "therium": 0,
+          "supply": 0,
+          "time": 40, 
+		  "produces": [
+            "argent"
+        }
       }
     }
   }
