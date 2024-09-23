@@ -15,3 +15,7 @@
 - Have artist make new frames
 - Fix frames dancing around when units are added/removed (set min-widths on frames)
 - ~~Fix spurious supply and production buildings when last unit removed from CUP frame~~
+- Update Stormgate Unit Stats to match version 0.1.0
+- Update Version Number
+- Add Celestial faction
+- Create yellow? purple? themed celestial UI containers
