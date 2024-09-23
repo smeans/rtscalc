@@ -3,7 +3,7 @@ const config = {
     "id": "stormgate",
     "title": "Stormgate Build Calculator",
     "description": "A simple calculator to determine a production mix given a certain level of resource mining in Stormgate.",
-    "patchInfo": "Stormgate Elephant Beta Balance Patch 2/13/2024",
+    "patchInfo": "Stormgate Hunter Early Access Patch 0.1.0 9/19/2024",
     "resources": {
       "luminite": {
         "color": "#deac26"
