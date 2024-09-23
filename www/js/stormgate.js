@@ -393,8 +393,8 @@ const config = {
         }        
       }
     },
-    "celestial": {
-      "name": "celestial",
+    "celestials": {
+      "name": "celestials",
       "workers": {
         "name": "prism",
         "rpm": {
@@ -447,7 +447,6 @@ const config = {
 		  "produces": [
             "argent"
         }
-      }
     }
   }
 }
