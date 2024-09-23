@@ -185,7 +185,7 @@ const config = {
           "luminite": 50,
           "therium": 0,
           "supply": 1,
-          "time": 20
+          "time": 17
         },
         "lancer": {
           "luminite": 100,
