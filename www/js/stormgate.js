@@ -443,6 +443,9 @@ const config = {
           "therium": 0,
           "supply": 0,
           "time": 60
+          "produces": [
+            "prism"
+      ]
         },
         "creation_chamber": {
           "luminite": 150,
@@ -451,6 +454,7 @@ const config = {
           "time": 40, 
           "produces": [
                 "argent"
+                "kri"
           ]
         }
       }
