@@ -416,11 +416,59 @@ const config = {
           "supply": 2,
           "time": 26
         },
+        "scanner": {
+          "luminite": 50,
+          "therium": 25,
+          "supply": 1,
+          "time": 20
+        },
         "kri": {
           "luminite": 100,
           "therium": 25,
           "supply": 2,
           "time": 28
+        },
+        "cabal": {
+          "luminite": 125,
+          "therium": 75,
+          "supply": 3,
+          "time": 32
+        },
+        "vector": {
+          "luminite": 200,
+          "therium": 75,
+          "supply": 4,
+          "time": 38
+        },
+        "scythe": {
+          "luminite": 200,
+          "therium": 75,
+          "supply": 4,
+          "time": 38
+        },
+        "sabre": {
+          "luminite": 225,
+          "therium": 125,
+          "supply": 6,
+          "time": 45
+        },
+        "seraphim": {
+          "luminite": 100,
+          "therium": 75,
+          "supply": 3,
+          "time": 30
+        },
+        "animancer": {
+          "luminite": 100,
+          "therium": 150,
+          "supply": 4,
+          "time": 40
+        },
+        "archangel": {
+          "luminite": 400,
+          "therium": 300,
+          "supply": 12,
+          "time": 65
         }
       },
       "upgrades": {
@@ -450,7 +498,21 @@ const config = {
           "therium": 0,
           "supply": 0,
           "time": 40, 
-          "produces": ["argent", "kri"]
+          "produces": ["argent", "kri", "scanner", "cabal"]
+        },
+        "starforge": {
+          "luminite": 150,
+          "therium": 50,
+          "supply": 0,
+          "time": 45, 
+          "produces": ["vector", "scythe", "saber"]
+        },
+        "legion_hall": {
+          "luminite": 150,
+          "therium": 75,
+          "supply": 0,
+          "time": 45, 
+          "produces": ["seraphim", "animancer", "archangel"]
         }
       }
     }
