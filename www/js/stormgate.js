@@ -446,7 +446,7 @@ const config = {
           "produces": [
             "prism"
       ]
-        },
+        }
         "creation_chamber": {
           "luminite": 150,
           "therium": 0,
