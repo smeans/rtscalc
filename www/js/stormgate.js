@@ -404,6 +404,12 @@ const config = {
         "maxActive": 100
       },
       "units": {
+        "prism": {
+          "luminite": 125,
+          "therium": 0,
+          "supply": 3,
+          "time": 30
+        },
         "argent": {
           "luminite": 100,
           "therium": 0,
