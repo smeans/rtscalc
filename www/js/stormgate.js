@@ -442,7 +442,7 @@ const config = {
           "luminite": 250,
           "therium": 0,
           "supply": 0,
-          "time": 60
+          "time": 60,
           "produces": ["prism"]
         },
         "creation_chamber": {
