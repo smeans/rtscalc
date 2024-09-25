@@ -19,3 +19,6 @@
 - Update Version Number
 - Add Celestial faction
 - Create yellow? purple? themed celestial UI containers
+- Add images for Celestial faction
+- Add power system for Celestials
+- Celestial calculation not working
