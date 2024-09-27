@@ -489,8 +489,9 @@ const config = {
         "arcship": {
           "luminite": 250,
           "therium": 0,
-          "supply": 0,
+          "supply": 300,
           "time": 60,
+          "defaultSupply": true,
           "produces": ["prism"]
         },
         "creation_chamber": {
