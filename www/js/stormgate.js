@@ -487,9 +487,9 @@ const config = {
       },
       "buildings": {
         "arcship": {
-          "luminite": 250,
+          "luminite": 0,
           "therium": 0,
-          "supply": 300,
+          "supply": -300,
           "time": 60,
           "defaultSupply": true,
           "produces": ["prism"]
