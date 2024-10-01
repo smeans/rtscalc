@@ -494,6 +494,12 @@ const config = {
           "defaultSupply": true,
           "produces": ["prism"]
         },
+        "power_bank": {
+          "luminite": 100,
+          "therium": 0,
+          "supply": 0,
+          "time": 15,
+        },
         "creation_chamber": {
           "luminite": 150,
           "therium": 0,
@@ -514,6 +520,12 @@ const config = {
           "supply": 0,
           "time": 45, 
           "produces": ["seraphim", "animancer", "archangel"]
+        },
+        "link_node": {
+          "luminite": 50,
+          "therium": 0,
+          "supply": 0,
+          "time": 5, 
         }
       }
     }
