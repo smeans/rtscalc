@@ -186,7 +186,8 @@ const config = {
             "scout",
             "lancer",
             "exo",
-            "medtech"
+            "medtech",
+            "graven"
           ]
         },
         "mechbay": {
@@ -214,7 +215,8 @@ const config = {
           "produces": [
             "hornet",
             "evac",
-            "sentinel"
+            "sentinel",
+            "helicarrier"
           ]
         },
         "biokineticslab": {
@@ -255,9 +257,9 @@ const config = {
           "time": 17.5
         },
         "brute": {
-          "luminite": 150,
+          "luminite": 100,
           "therium": 0,
-          "supply": 3,
+          "supply": 2,
           "time": 35.5
         },
         "gaunt": {
@@ -278,7 +280,7 @@ const config = {
           "supply": 8,
           "time": 35.5
         },
-        "doombringer": {
+        "harbinger": {
           "luminite": 100,
           "therium": 150,
           "supply": 4,
@@ -362,14 +364,14 @@ const config = {
           "therium": 0,
           "supply": 0,
           "time": 60,
-          "produces": ["gaunt", "doombringer", "weaver"]
+          "produces": ["gaunt", "hexen", "weaver"]
         },
         "twilight_spire": {
           "luminite": 100,
           "therium": 50,
           "supply": 0,
           "time": 60,
-          "produces": ["shadowflyer", "spriggan"]
+          "produces": ["shadowflyer", "harbinger", "spriggan"]
         },
         "shadowcleft": {
           "luminite": 150,
