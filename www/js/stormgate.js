@@ -35,7 +35,7 @@ const config = {
           "luminite": 100,
           "therium": 0,
           "supply": 2,
-          "time": 26
+          "time": 24
         },
         "scout": {
           "luminite": 50,
@@ -49,41 +49,41 @@ const config = {
           "supply": 2,
           "time": 28
         },
+        "medtech": {
+          "luminite": 100,
+          "therium": 50,
+          "supply": 3,
+          "time": 30
+        },
         "graven": {
           "luminite": 125,
           "therium": 75,
           "supply": 4,
           "time": 38
         },
-        "medtech": {
-          "luminite": 100,
-          "therium": 50,
-          "supply": 3,
-          "time": 27
-        },
         "hedgehog": {
           "luminite": 150,
           "therium": 25,
           "supply": 3,
-          "time": 35
+          "time": 30
         },
         "vulcan": {
           "luminite": 200,
           "therium": 125,
-          "supply": 6,
-          "time": 50
+          "supply": 5,
+          "time": 45
         },
         "atlas": {
           "luminite": 250,
           "therium": 125,
           "supply": 6,
-          "time": 55
+          "time": 48
         },
         "hornet": {
-          "luminite": 125,
+          "luminite": 150,
           "therium": 75,
-          "supply": 3,
-          "time": 38
+          "supply": 4,
+          "time": 34
         },
         "evac": {
           "luminite": 100,
@@ -95,7 +95,7 @@ const config = {
           "luminite": 75,
           "therium": 125,
           "supply": 4,
-          "time": 50
+          "time": 40
         },
         "helicarrier": {
           "luminite": 300,
