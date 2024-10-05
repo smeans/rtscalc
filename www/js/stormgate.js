@@ -262,12 +262,6 @@ const config = {
           "supply": 2,
           "time": 35.5
         },
-        "gaunt": {
-          "luminite": 50,
-          "therium": 15,
-          "supply": 1,
-          "time": 35.5
-        },
         "magmadon": {
           "luminite": 250,
           "therium": 150,
@@ -280,10 +274,16 @@ const config = {
           "supply": 8,
           "time": 35.5
         },
-        "harbinger": {
+        "gaunt": {
           "luminite": 100,
-          "therium": 150,
-          "supply": 4,
+          "therium": 25,
+          "supply": 2,
+          "time": 35.5
+        },
+        "hexen": {
+          "luminite": 100,
+          "therium": 75,
+          "supply": 2,
           "time": 35.5
         },
         "weaver": {
@@ -297,6 +297,13 @@ const config = {
           "therium": 50,
           "supply": 1,
           "time": 35.5
+        },
+        "harbinger": {
+          "luminite": 100,
+          "therium": 150,
+          "supply": 4,
+          "time": 35.5
+
         },
         "spriggan": {
           "luminite": 100,
