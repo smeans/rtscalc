@@ -3,7 +3,7 @@ const config = {
     "id": "stormgate",
     "title": "Stormgate Build Calculator",
     "description": "A simple calculator to determine a production mix given a certain level of resource mining in Stormgate.",
-    "patchInfo": "Stormgate Hunter Early Access Patch 0.1.0 9/19/2024",
+    "patchInfo": "Stormgate Early Access Patch 0.3.1 3/1/2025",
     "resources": {
       "luminite": {
         "color": "#deac26"
@@ -19,7 +19,7 @@ const config = {
       "workers": {
         "name": "bob",
         "rpm": {
-          "luminite": 50,
+          "luminite": 62,
           "therium": 35
         },
         "maxActive": 100
@@ -44,7 +44,7 @@ const config = {
           "time": 18
         },
         "exo": {
-          "luminite": 125,
+          "luminite": 100,
           "therium": 25,
           "supply": 2,
           "time": 28
@@ -69,7 +69,7 @@ const config = {
         },
         "vulcan": {
           "luminite": 200,
-          "therium": 125,
+          "therium": 100,
           "supply": 5,
           "time": 45
         },
@@ -98,10 +98,10 @@ const config = {
           "time": 40
         },
         "helicarrier": {
-          "luminite": 300,
-          "therium": 250,
+          "luminite": 375,
+          "therium": 325,
           "supply": 8,
-          "time": 55
+          "time": 70
         }
       },
       "upgrades": {
@@ -244,7 +244,7 @@ const config = {
       "workers": {
         "name": "imp",
         "rpm": {
-          "luminite": 50,
+          "luminite": 62,
           "therium": 35
         },
         "maxActive": 100
@@ -257,7 +257,7 @@ const config = {
           "time": 17.5
         },
         "brute": {
-          "luminite": 100,
+          "luminite": 125,
           "therium": 0,
           "supply": 2,
           "time": 35.5
@@ -270,7 +270,7 @@ const config = {
         },
         "hellborne": {
           "luminite": 250,
-          "therium": 225,
+          "therium": 150,
           "supply": 8,
           "time": 35.5
         },
@@ -287,20 +287,20 @@ const config = {
           "time": 35.5
         },
         "weaver": {
-          "luminite": 100,
-          "therium": 150,
-          "supply": 4,
+          "luminite": 125,
+          "therium": 200,
+          "supply": 5,
           "time": 35.5
         },
         "shadowflyer": {
-          "luminite": 25,
-          "therium": 50,
-          "supply": 1,
+          "luminite": 50,
+          "therium": 75,
+          "supply": 2,
           "time": 35.5
         },
         "harbinger": {
           "luminite": 100,
-          "therium": 150,
+          "therium": 100,
           "supply": 4,
           "time": 35.5
 
@@ -414,16 +414,16 @@ const config = {
       },
       "units": {
         "prism": {
-          "luminite": 125,
+          "luminite": 150,
           "therium": 0,
           "supply": 3,
-          "time": 30
+          "time": 55
         },
         "argent": {
           "luminite": 100,
           "therium": 0,
           "supply": 2,
-          "time": 26
+          "time": 28
         },
         "scanner": {
           "luminite": 50,
@@ -439,15 +439,15 @@ const config = {
         },
         "cabal": {
           "luminite": 125,
-          "therium": 75,
+          "therium": 100,
           "supply": 3,
           "time": 32
         },
         "vector": {
-          "luminite": 200,
-          "therium": 75,
-          "supply": 4,
-          "time": 38
+          "luminite": 150,
+          "therium": 50,
+          "supply": 3,
+          "time": 32
         },
         "scythe": {
           "luminite": 200,
@@ -474,7 +474,7 @@ const config = {
           "time": 40
         },
         "archangel": {
-          "luminite": 400,
+          "luminite": 350,
           "therium": 300,
           "supply": 12,
           "time": 65
