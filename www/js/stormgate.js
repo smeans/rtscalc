@@ -19,7 +19,7 @@ const config = {
       "workers": {
         "name": "bob",
         "rpm": {
-          "luminite": 62,
+          "luminite": 60,
           "therium": 35
         },
         "maxActive": 100
@@ -244,7 +244,7 @@ const config = {
       "workers": {
         "name": "imp",
         "rpm": {
-          "luminite": 62,
+          "luminite": 60,
           "therium": 35
         },
         "maxActive": 100
