@@ -407,7 +407,7 @@ const config = {
       "workers": {
         "name": "prism",
         "rpm": {
-          "luminite": 75,
+          "luminite": 150,
           "therium": 150
         },
         "maxActive": 100
