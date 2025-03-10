@@ -1,5 +1,5 @@
 - ~~switch to blue frames when vanguard selected~~
-- remove badges and supply structures - (cafiend: do we think this is done?)
+- ~~remove badges and supply structures~~
 - ~~go back to constant unit production model~~
 - ~~combine uppm and pb windows~~
 - ~~move inputs below, outputs above~~
@@ -8,17 +8,17 @@
 - ~~go back to constant unit production model for calculation~~
 - ~~Unit stats tooltips~~
 - Readme
-- Patch/version info
+- ~~Patch/version info~~
 - Help/How-to menu
 - ~~Can we make it so the first letter is uppercase in the dropdown, or make the whole word uppercase?~~
 - ~~Unit stats in mouseover tooltip~~
 - Have artist make new frames
 - Fix frames dancing around when units are added/removed (set min-widths on frames)
 - ~~Fix spurious supply and production buildings when last unit removed from CUP frame~~
-- Update Stormgate Unit Stats to match version 0.1.0
-- Update Version Number
-- Add Celestial faction
+- ~~Update Stormgate Unit Stats to match version 0.3.1~~
+- ~~Add Celestial faction~~
 - Create yellow? purple? themed celestial UI containers
-- Add images for Celestial faction
+- ~~Add images for Celestial faction~~
 - Add power system for Celestials
-- Celestial calculation not working
+- ~~Celestial calculation not working~~
+- Add Creep Camp Income Slider
