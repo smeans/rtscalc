@@ -263,14 +263,14 @@ const config = {
           "time": 35.5
         },
         "magmadon": {
-          "luminite": 250,
-          "therium": 150,
+          "luminite": 275,
+          "therium": 125,
           "supply": 6,
           "time": 35.5
         },
         "hellborne": {
-          "luminite": 250,
-          "therium": 150,
+          "luminite": 300,
+          "therium": 125,
           "supply": 8,
           "time": 35.5
         },
@@ -417,7 +417,7 @@ const config = {
           "luminite": 150,
           "therium": 0,
           "supply": 3,
-          "time": 55
+          "time": 60
         },
         "argent": {
           "luminite": 100,
