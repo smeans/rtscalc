@@ -3,7 +3,7 @@ const config = {
     "id": "stormgate",
     "title": "Stormgate Build Calculator",
     "description": "A simple calculator to determine a production mix given a certain level of resource mining in Stormgate.",
-    "patchInfo": "Stormgate Early Access Patch 0.3.2 3/11/2025",
+    "patchInfo": "Stormgate Early Access Patch 0.4.2 5/6/2025",
     "resources": {
       "luminite": {
         "color": "#deac26"
@@ -29,7 +29,7 @@ const config = {
           "luminite": 50,
           "therium": 0,
           "supply": 1,
-          "time": 17
+          "time": 25
         },
         "lancer": {
           "luminite": 100,
@@ -174,14 +174,14 @@ const config = {
           "luminite": 100,
           "therium": 0,
           "supply": -15,
-          "time": 20,
+          "time": 10,
           "defaultSupply": true
         },
         "barracks": {
           "luminite": 150,
           "therium": 0,
           "supply": 0,
-          "time": 40,
+          "time": 30,
           "produces": [
             "scout",
             "lancer",
@@ -194,7 +194,7 @@ const config = {
           "luminite": 150,
           "therium": 50,
           "supply": 0,
-          "time": 45,
+          "time": 30,
           "produces": [
             "atlas",
             "vulcan",
@@ -205,13 +205,13 @@ const config = {
           "luminite": 100,
           "therium": 0,
           "supply": 0,
-          "time": 35
+          "time": 15
         },
         "hangarbay": {
           "luminite": 150,
           "therium": 75,
           "supply": 0,
-          "time": 45,
+          "time": 30,
           "produces": [
             "hornet",
             "evac",
@@ -269,9 +269,9 @@ const config = {
           "time": 35.5
         },
         "hellborne": {
-          "luminite": 300,
-          "therium": 125,
-          "supply": 8,
+          "luminite": 275,
+          "therium": 75,
+          "supply": 6,
           "time": 35.5
         },
         "gaunt": {
@@ -281,14 +281,14 @@ const config = {
           "time": 35.5
         },
         "hexen": {
-          "luminite": 100,
-          "therium": 75,
+          "luminite": 75,
+          "therium": 100,
           "supply": 2,
           "time": 35.5
         },
         "weaver": {
           "luminite": 125,
-          "therium": 200,
+          "therium": 175,
           "supply": 5,
           "time": 35.5
         },
@@ -306,9 +306,9 @@ const config = {
 
         },
         "spriggan": {
-          "luminite": 100,
-          "therium": 50,
-          "supply": 3,
+          "luminite": 50,
+          "therium": 25,
+          "supply": 1,
           "time": 35.5
         }
       },
@@ -346,59 +346,59 @@ const config = {
       },
       "buildings": {
         "shrine": {
-          "luminite": 350,
+          "luminite": 300,
           "therium": 0,
           "supply": -15,
-          "time": 80,
+          "time": 75,
           "produces": ["imp"]
         },
         "meat_farm": {
           "luminite": 50,
           "therium": 0,
           "supply": -15,
-          "time": 20,
+          "time": 7.5,
           "defaultSupply": true
         },
         "iron_vault": {
           "luminite": 100,
           "therium": 10,
           "supply": 0,
-          "time": 60,
+          "time": 40,
           "produces": ["brute", "magmadon", "hellborne"]
         },
         "conclave": {
           "luminite": 100,
           "therium": 0,
           "supply": 0,
-          "time": 60,
+          "time": 40,
           "produces": ["gaunt", "hexen", "weaver"]
         },
         "twilight_spire": {
           "luminite": 100,
           "therium": 50,
           "supply": 0,
-          "time": 60,
+          "time": 40,
           "produces": ["shadowflyer", "harbinger", "spriggan"]
         },
         "shadowcleft": {
           "luminite": 150,
           "therium": 100,
           "supply": 0,
-          "time": 70,
+          "time": 35,
           "upgrades": ["soulforge_ascendance", "demonhoof_tremors"]
         },
         "ritual_chamber": {
           "luminite": 100,
           "therium": 150,
           "supply": 0,
-          "time": 60,
+          "time": 35,
           "upgrades": ["flame_on", "sanguine_surge", "reapers_rush"]
         },
         "shroudstone": {
           "luminite": 25,
           "therium": 100,
           "supply": 0,
-          "time": 40
+          "time": 30
         }        
       }
     },
@@ -423,19 +423,19 @@ const config = {
           "luminite": 100,
           "therium": 0,
           "supply": 2,
-          "time": 28
+          "time": 24
         },
         "scanner": {
-          "luminite": 50,
+          "luminite": 25,
           "therium": 25,
           "supply": 1,
           "time": 20
         },
         "kri": {
-          "luminite": 100,
+          "luminite": 75,
           "therium": 25,
           "supply": 2,
-          "time": 28
+          "time": 24
         },
         "cabal": {
           "luminite": 125,
@@ -507,27 +507,27 @@ const config = {
           "luminite": 100,
           "therium": 0,
           "supply": 0,
-          "time": 15,
+          "time": 10,
         },
         "creation_chamber": {
           "luminite": 150,
           "therium": 0,
           "supply": 0,
-          "time": 40, 
+          "time": 30, 
           "produces": ["argent", "kri", "scanner", "cabal"]
         },
         "starforge": {
           "luminite": 150,
           "therium": 50,
           "supply": 0,
-          "time": 45, 
+          "time": 30, 
           "produces": ["vector", "scythe", "saber"]
         },
         "legion_hall": {
           "luminite": 150,
           "therium": 75,
           "supply": 0,
-          "time": 45, 
+          "time": 30, 
           "produces": ["seraphim", "animancer", "archangel"]
         },
         "link_node": {
