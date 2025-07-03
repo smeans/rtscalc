@@ -257,7 +257,7 @@ const config = {
           "time": 17.5
         },
         "brute": {
-          "luminite": 125,
+          "luminite": 150,
           "therium": 0,
           "supply": 2,
           "time": 35.5
