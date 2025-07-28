@@ -25,7 +25,7 @@ const config = {
         "maxActive": 100
       },
       "units": {
-        "bob": {
+        "servo": {
           "luminite": 50,
           "therium": 0,
           "supply": 1,
