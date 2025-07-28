@@ -3,7 +3,7 @@ const config = {
     "id": "stormgate",
     "title": "Stormgate Build Calculator",
     "description": "A simple calculator to determine a production mix given a certain level of resource mining in Stormgate.",
-    "patchInfo": "Stormgate Early Access Patch 0.5.0 7/3/2025",
+    "patchInfo": "Stormgate Early Access Patch 0.5.1 7/3/2025",
     "resources": {
       "luminite": {
         "color": "#deac26"
@@ -17,7 +17,7 @@ const config = {
     "vanguard": {
       "name": "vanguard",
       "workers": {
-        "name": "bob",
+        "name": "servo",
         "rpm": {
           "luminite": 60,
           "therium": 35
