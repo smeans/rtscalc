@@ -167,7 +167,7 @@ const config = {
           "supply": -15,
           "time": 90,
           "produces": [
-            "bob"
+            "servo"
           ]
         },
         "habitat": {
@@ -190,7 +190,7 @@ const config = {
             "graven"
           ]
         },
-        "mechbay": {
+        "mech_bay": {
           "luminite": 150,
           "therium": 50,
           "supply": 0,
@@ -207,7 +207,7 @@ const config = {
           "supply": 0,
           "time": 15
         },
-        "hangarbay": {
+        "hangar_bay": {
           "luminite": 150,
           "therium": 75,
           "supply": 0,
