@@ -3,7 +3,7 @@ const config = {
     "id": "stormgate",
     "title": "Stormgate Build Calculator",
     "description": "A simple calculator to determine a production mix given a certain level of resource mining in Stormgate.",
-    "patchInfo": "Stormgate Early Access Patch 0.5.1 7/3/2025",
+    "patchInfo": "Stormgate Necrolyte Patch 8/5/2025",
     "resources": {
       "luminite": {
         "color": "#deac26"
@@ -254,7 +254,7 @@ const config = {
           "luminite": 50,
           "therium": 0,
           "supply": 1,
-          "time": 17.5
+          "time": 18.5
         },
         "brute": {
           "luminite": 150,
@@ -306,7 +306,7 @@ const config = {
 
         },
         "spriggan": {
-          "luminite": 50,
+          "luminite": 37.5,
           "therium": 25,
           "supply": 1,
           "time": 35.5
@@ -352,7 +352,7 @@ const config = {
           "time": 75,
           "produces": ["imp"]
         },
-        "meat_farm": {
+        "tribute_pyre": {
           "luminite": 50,
           "therium": 0,
           "supply": -15,
@@ -407,17 +407,17 @@ const config = {
       "workers": {
         "name": "prism",
         "rpm": {
-          "luminite": 150,
-          "therium": 100
+          "luminite": 50,
+          "therium": 35
         },
         "maxActive": 100
       },
       "units": {
         "prism": {
-          "luminite": 150,
+          "luminite": 40,
           "therium": 0,
-          "supply": 3,
-          "time": 60
+          "supply": 1,
+          "time": 14
         },
         "argent": {
           "luminite": 100,
@@ -426,8 +426,8 @@ const config = {
           "time": 24
         },
         "scanner": {
-          "luminite": 25,
-          "therium": 25,
+          "luminite": 50,
+          "therium": 0,
           "supply": 1,
           "time": 20
         },
@@ -438,19 +438,19 @@ const config = {
           "time": 24
         },
         "cabal": {
-          "luminite": 125,
+          "luminite": 100,
           "therium": 100,
           "supply": 3,
           "time": 32
         },
         "vector": {
-          "luminite": 150,
+          "luminite": 125,
           "therium": 50,
           "supply": 3,
           "time": 32
         },
         "scythe": {
-          "luminite": 200,
+          "luminite": 150,
           "therium": 75,
           "supply": 4,
           "time": 38
