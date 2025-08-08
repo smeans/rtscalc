@@ -455,7 +455,7 @@ const config = {
           "supply": 4,
           "time": 38
         },
-        "sabre": {
+        "saber": {
           "luminite": 225,
           "therium": 125,
           "supply": 6,
