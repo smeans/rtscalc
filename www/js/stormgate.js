@@ -408,7 +408,7 @@ const config = {
         "name": "prism",
         "rpm": {
           "luminite": 50,
-          "therium": 35
+          "therium": 20
         },
         "maxActive": 100
       },
