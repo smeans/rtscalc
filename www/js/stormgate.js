@@ -1,7 +1,7 @@
 const config = {
   "info": {
     "id": "stormgate",
-    "title": "Stormgate Build Calculator",
+    "title": "Stormgate Production Calculator",
     "description": "A simple calculator to determine a production mix given a certain level of resource mining in Stormgate.",
     "patchInfo": "Stormgate Necrolyte Patch 8/5/2025",
     "resources": {
